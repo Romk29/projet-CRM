@@ -1,9 +1,0 @@
-EXO base w3school
-
-// 1
-SELECT City, COUNT(CustomerID)
-FROM [Customers]
-GROUP BY City
-ORDER BY COUNT(CUSTOMERID) DESC
-
-//2
