@@ -8,6 +8,14 @@ public class Produits {
 	private Double prix;
 	
 	
+	
+	
+	public Produits() {
+		super();
+	}
+
+
+
 	public Produits(Long id, String nom, String description, Double prix) {
 		super();
 		this.id = id;
