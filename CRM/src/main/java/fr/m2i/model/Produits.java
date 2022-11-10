@@ -11,13 +11,11 @@ public class Produits {
 	
 	
 	public Produits() {
-		super();
 	}
 
 
 
 	public Produits(Long id, String nom, String description, Double prix) {
-		super();
 		this.id = id;
 		this.nom = nom;
 		this.description = description;
