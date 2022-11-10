@@ -8,7 +8,9 @@ public class adresse {
 	int code_postal;
 	
 	
+	public  adresse() {
 	
+	}
 
 	public adresse(int id, String rue, String ville, String pays, int code_postal) {
 		super();
