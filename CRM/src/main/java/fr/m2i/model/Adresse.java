@@ -18,7 +18,7 @@ public class Adresse {
 		this.rue = rue;
 		this.ville = ville;
 		this.pays = pays;
-		this.code_postal = code_postal;
+		this.codePostal = code_postal;
 	}
 
 	public int getId() {
