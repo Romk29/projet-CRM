@@ -5,7 +5,7 @@ public class Adresse {
 	String rue;
 	String ville;
 	String pays;
-	int code_postal;
+	int codePostal;
 	
 	
 	public  Adresse() {
@@ -18,7 +18,7 @@ public class Adresse {
 		this.rue = rue;
 		this.ville = ville;
 		this.pays = pays;
-		this.code_postal = code_postal;
+		this.codePostal = code_postal;
 	}
 
 	public int getId() {
@@ -53,12 +53,12 @@ public class Adresse {
 		this.pays = pays;
 	}
 
-	public int getCode_postal() {
-		return code_postal;
+	public int getCodePostal() {
+		return codePostal;
 	}
 
-	public void setCode_postal(int code_postal) {
-		this.code_postal = code_postal;
+	public void setCodePostal(int code_postal) {
+		this.codePostal = code_postal;
 	}
 
 }
