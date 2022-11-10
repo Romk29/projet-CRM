@@ -13,10 +13,10 @@ public class Paiement {
 	}
 	
 	
-	public Paiement(int id, int no_carte, int code_confidentiel, String banque, Client client) {
+	public Paiement(int id, int no_carte, int codeConfidentiel, String banque, Client client) {
 		this.id = id;
-		this.noCarte = no_carte;
-		this.codeConfidentiel = code_confidentiel;
+		this.noCarte = noCarte;
+		this.codeConfidentiel = codeConfidentiel;
 		this.banque = banque;
 		this.client = client;
 	}
@@ -31,19 +31,19 @@ public class Paiement {
 		this.id = id;
 	}
 
-	public int getNo_carte() {
+	public int getNoCarte() {
 		return noCarte;
 	}
 
-	public void setNo_carte(int noCarte) {
+	public void setNoCarte(int noCarte) {
 		this.noCarte = noCarte;
 	}
 
-	public int getCode_confidentiel() {
+	public int getCodeConfidentiel() {
 		return codeConfidentiel;
 	}
 
-	public void setCode_confidentiel(int codeConfidentiel) {
+	public void setCodeConfidentiel(int codeConfidentiel) {
 		this.codeConfidentiel = codeConfidentiel;
 	}
 
