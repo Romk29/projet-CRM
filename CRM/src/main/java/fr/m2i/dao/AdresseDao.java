@@ -4,7 +4,6 @@ import java.util.List;
 
 import fr.m2i.model.Adresse;
 
-
 public interface AdresseDao {
 
 	void          creer( Adresse adresse ) throws DaoException;
