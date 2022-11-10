@@ -1,6 +1,6 @@
 package fr.m2i.model;
 
-public class adresse {
+public class Adresse {
 	int id;
 	String rue;
 	String ville;
@@ -8,11 +8,11 @@ public class adresse {
 	int code_postal;
 	
 	
-	public  adresse() {
+	public  Adresse() {
 	
 	}
 
-	public adresse(int id, String rue, String ville, String pays, int code_postal) {
+	public Adresse(int id, String rue, String ville, String pays, int code_postal) {
 		
 		this.id = id;
 		this.rue = rue;
