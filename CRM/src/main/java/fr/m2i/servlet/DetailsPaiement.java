@@ -12,32 +12,29 @@ import fr.m2i.dao.DaoFactory;
 import fr.m2i.dao.PaiementDao;
 
 /**
- * Servlet implementation class SupprimerPaiement
+ * Servlet implementation class DetailsPaiement
  */
-@WebServlet("/SupprimerPaiement")
-public class SupprimerPaiement extends HttpServlet {
+@WebServlet("/DetailsPaiement")
+public class DetailsPaiement extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
 	private PaiementDao paiementDao;
 	
-
-    public SupprimerPaiement() {
+	
+    public DetailsPaiement() {
         super();
         paiementDao = DaoFactory.getInstance().getPaiementDao();
     }
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		try {
 			int id = Integer.parseInt(request.getParameter("id"));
-			paiementDao.supprimer(id);
-
+			request.setAttribute("paiement", paiementDao.trouver(id));
 		} catch (DaoException e) {
 			e.printStackTrace();
 		}
-		
-		response.sendRedirect( request.getContextPath() + "/ListePaiements" );
+		this.getServletContext().getRequestDispatcher("/WEB-INF/detailsPaiement.jsp").forward(request, response);
 
 	}
 

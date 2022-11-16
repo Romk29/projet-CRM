@@ -15,7 +15,7 @@
 	<c:import url="/WEB-INF/menu.jsp" />
 	
 	
-	<p>BIENVENUE !</p>
+	<h1>BIENVENUE !</h1>
 	
 </body>
 </html>
