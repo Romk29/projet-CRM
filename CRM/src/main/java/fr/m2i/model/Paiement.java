@@ -13,7 +13,7 @@ public class Paiement {
 	}
 	
 	
-	public Paiement(int id, int no_carte, int codeConfidentiel, String banque, Client client) {
+	public Paiement(int id, int noCarte, int codeConfidentiel, String banque, Client client) {
 		this.id = id;
 		this.noCarte = noCarte;
 		this.codeConfidentiel = codeConfidentiel;
