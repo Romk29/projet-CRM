@@ -73,7 +73,7 @@ public class PanierDaoImpl implements PanierDao {
 			ps.close();
 
 		} catch(SQLException ex) {
-	    	throw new DaoException("Echec cr�ation Panier",ex);
+	    	throw new DaoException("Echec recherche Panier",ex);
 	    } finally {
 	    	factory.releaseConnection(con);
 		}
@@ -102,7 +102,7 @@ public class PanierDaoImpl implements PanierDao {
 	    	factory.releaseConnection(con);
 		}
 		
-		return null;
+		return listePaniers;
 	}
 
 	@Override
@@ -137,8 +137,7 @@ public class PanierDaoImpl implements PanierDao {
 			e.printStackTrace();
 		}        
         return p;
-    }
-	
+    }	
 	
 	@Override
 	public void miseAJour(Panier panier) throws DaoException {
