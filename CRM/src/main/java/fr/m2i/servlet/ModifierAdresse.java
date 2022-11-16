@@ -21,75 +21,61 @@ import fr.m2i.model.Adresse;
 @WebServlet("/modifierAdresse")
 public class ModifierAdresse extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	private AdresseDao adresseDao;
-	
-    public ModifierAdresse() {
-        super();
-        adresseDao = DaoFactory.getInstance().getAdresseDao();
-    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private AdresseDao adresseDao;
+
+	public ModifierAdresse() {
+		super();
+		adresseDao = DaoFactory.getInstance().getAdresseDao();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		try {
 			int id = Integer.parseInt(request.getParameter("id"));
 			request.setAttribute("adresse", adresseDao.trouver(id));
 		} catch (DaoException e) {
 			e.printStackTrace();
 		}
-		
+
 		this.getServletContext().getRequestDispatcher("/WEB-INF/modifierAdresse.jsp").forward(request, response);
 	}
 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		Map<String, String> erreurs = new HashMap<String, String>();
-		
+
 		int id = Integer.parseInt(request.getParameter("id"));
 		String rue = request.getParameter("rueAdresse");
 		String ville = request.getParameter("villeAdresse");
 		String pays = request.getParameter("paysAdresse");
 		int codePostal = Integer.parseInt(request.getParameter("codePostal"));
 		/*
-		//Ajout des contrôles
-		if(nom != null) {
-			if(nom.length() < 2 || nom.length() > 20) {
-				erreurs.put("nomAdresse", "Un nom d'adresse doit contenir entre 2 et 20 caractères.");
-			}
-		} else {
-			erreurs.put("nomAdresse", "Merci d'entrer un nom d'adresse.");
-		}
-		
-		if(prenom != null) {
-			if(prenom.length() > 20) {
-				erreurs.put("prenomAdresse", "Un prénom d'adresse doit avoir maximum 20 caractères.");
-			}
-		}
-		
-		if(telephone != null) {
-			if(telephone.length() > 10) {
-				erreurs.put("telephoneAdresse", "Un numéro de téléphone doit avoir maximum 10 caractères.");
-			}
-			if(!telephone.matches("^\\d+$")) {
-				erreurs.put("telephoneAdresse", "Un numéro de téléphone doit contenir uniquement des chiffres.");
-			}
-		} else {
-			erreurs.put("telephoneAdresse", "Merci d'entrer un numéro de téléphone.");
-		}
-		
-		if(email != null) {
-			if(email.length() > 60) {
-				erreurs.put("emailAdresse", "Un email doit avoir maximum 60 caractères.");
-			}
-			if(!email.matches("([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)")) {
-				erreurs.put("emailAdresse", "Merci d'entrer une adresse email valide.");
-			}
-		}
-		*/
+		 * //Ajout des contrôles if(nom != null) { if(nom.length() < 2 || nom.length() >
+		 * 20) { erreurs.put("nomAdresse",
+		 * "Un nom d'adresse doit contenir entre 2 et 20 caractères."); } } else {
+		 * erreurs.put("nomAdresse", "Merci d'entrer un nom d'adresse."); }
+		 * 
+		 * if(prenom != null) { if(prenom.length() > 20) { erreurs.put("prenomAdresse",
+		 * "Un prénom d'adresse doit avoir maximum 20 caractères."); } }
+		 * 
+		 * if(telephone != null) { if(telephone.length() > 10) {
+		 * erreurs.put("telephoneAdresse",
+		 * "Un numéro de téléphone doit avoir maximum 10 caractères."); }
+		 * if(!telephone.matches("^\\d+$")) { erreurs.put("telephoneAdresse",
+		 * "Un numéro de téléphone doit contenir uniquement des chiffres."); } } else {
+		 * erreurs.put("telephoneAdresse", "Merci d'entrer un numéro de téléphone."); }
+		 * 
+		 * if(email != null) { if(email.length() > 60) { erreurs.put("emailAdresse",
+		 * "Un email doit avoir maximum 60 caractères."); }
+		 * if(!email.matches("([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)")) {
+		 * erreurs.put("emailAdresse", "Merci d'entrer une adresse email valide."); } }
+		 */
 		Adresse adresse = new Adresse();
 		try {
 			adresse = adresseDao.trouver(id);
-		}catch (DaoException e) {
+		} catch (DaoException e) {
 			e.printStackTrace();
 			erreurs.put("adresse", "Erreur l'adresse n'existe pas...");
 		}
@@ -97,24 +83,23 @@ public class ModifierAdresse extends HttpServlet {
 		adresse.setVille(ville);
 		adresse.setPays(pays);
 		adresse.setCodePostal(codePostal);
-		
-		//if(erreurs.isEmpty()) {
-			try {
-				adresseDao.miseAJour(adresse);
-				
-				//Ajout d'un élément dans la session
-				request.getSession().setAttribute("confirmMessage", "L'adresse a bien été modifié !");
-				
-				response.sendRedirect( request.getContextPath() + "/listeAdresses" );
-			} catch (DaoException e) {
-				e.printStackTrace();
-			}
-		//} else {
-		//	request.setAttribute("adresse", adresse);
-		//	request.setAttribute("erreurs", erreurs);
 
-			this.getServletContext().getRequestDispatcher("/WEB-INF/modifierAdresse.jsp").forward(request, response);
-		}	
-		
+		// if(erreurs.isEmpty()) {
+		try {
+			adresseDao.miseAJour(adresse);
+
+			// Ajout d'un élément dans la session
+			request.getSession().setAttribute("confirmMessage", "L'adresse a bien été modifié !");
+
+			response.sendRedirect(request.getContextPath() + "/listeAdresses");
+		} catch (DaoException e) {
+			e.printStackTrace();
+		}
+		// } else {
+		// request.setAttribute("adresse", adresse);
+		// request.setAttribute("erreurs", erreurs);
+
+		this.getServletContext().getRequestDispatcher("/WEB-INF/modifierAdresse.jsp").forward(request, response);
 	}
 
+}
