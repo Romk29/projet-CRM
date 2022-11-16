@@ -12,9 +12,8 @@ public class Adresse {
 	
 	}
 
-	public Adresse(int id, String rue, String ville, String pays, int codePostal) {
+	public Adresse(String rue, String ville, String pays, int codePostal) {
 		
-		this.id = id;
 		this.rue = rue;
 		this.ville = ville;
 		this.pays = pays;
@@ -61,4 +60,10 @@ public class Adresse {
 		this.codePostal = codePostal;
 	}
 
+	@Override
+	public String toString() {
+		return getId() + " : " + getRue() + " " + getVille() + " - " + getPays() + " / " + getCodePostal();
+	}
+
+	
 }

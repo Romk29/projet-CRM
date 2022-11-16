@@ -10,7 +10,6 @@ public class Panier {
 	}
 
 	public Panier(Client client) {
-		super();
 		this.client = client;
 	}
 
@@ -30,5 +29,9 @@ public class Panier {
 		this.client = client;
 	}
 	
+	@Override
+	public String toString() {
+		return  getId() + " " + getClient().getNom() + " " + getClient().getPrenom();
+	}
 
 }

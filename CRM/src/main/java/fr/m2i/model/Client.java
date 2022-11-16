@@ -18,7 +18,6 @@ public class Client {
 
 	public Client(String nom, String prenom, Adresse adresse, String mail, String nomSociete, String telephone,
 			int etat, int genre) {
-		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.adresse = adresse;
@@ -101,6 +100,11 @@ public class Client {
 
 	public void setGenre(int genre) {
 		this.genre = genre;
+	}
+	
+	@Override
+	public String toString() {
+		return getId() + " : " + getNom() + " " + getPrenom();
 	}
 	
 
