@@ -2,6 +2,15 @@ package fr.m2i.model;
 
 public class Contient {
 	
+	int id;
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	private Produit produit;
 	private Panier panier;
 	
@@ -29,5 +38,7 @@ public class Contient {
 	public void setPanier(Panier panier) {
 		this.panier = panier;
 	}
+
+	
 		
 }
