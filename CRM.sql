@@ -52,7 +52,7 @@ CREATE TABLE contient(
 
 // INSERTION
 
-INSERT INTO adresse(rue,ville,pays,code_postal) VALUES (3 rue des Franciscains, Nantes, France, 44300);
+INSERT INTO adresse(rue,ville,pays,code_postal) VALUES (3 rue des Franciscains, Nantes, France, 44300),
 ('10 rue des mouettes', 'Gouesnou', 'France', '29850'),
 ('25 rue de Rennes', 'Paris', 'France', '75020'),
 ('rue des Oiseaux', 'Rennes', 'France', '35000'),
