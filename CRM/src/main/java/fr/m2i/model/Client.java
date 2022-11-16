@@ -6,6 +6,7 @@ public class Client {
 	private String nom;
 	private String prenom;
 	private Adresse adresse;
+	private String mail;
 	private String nomSociete;
 	private String telephone;
 	private int etat;
@@ -15,17 +16,20 @@ public class Client {
 		
 	}
 
-	public Client(String nom, String prenom, Adresse adresse, String nomSociete, String telephone, int etat,
-			int genre) {
+	public Client(String nom, String prenom, Adresse adresse, String mail, String nomSociete, String telephone,
+			int etat, int genre) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.adresse = adresse;
+		this.mail = mail;
 		this.nomSociete = nomSociete;
 		this.telephone = telephone;
 		this.etat = etat;
 		this.genre = genre;
 	}
+
+
 
 	public int getId() {
 		return id;
@@ -57,6 +61,14 @@ public class Client {
 
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 
 	public String getNomSociete() {
