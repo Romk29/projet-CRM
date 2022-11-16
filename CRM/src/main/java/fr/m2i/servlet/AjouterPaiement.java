@@ -7,6 +7,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.m2i.dao.ClientDao;
+import fr.m2i.dao.DaoException;
+import fr.m2i.dao.DaoFactory;
+import fr.m2i.dao.PaiementDao;
+import fr.m2i.model.Paiement;
+
+
 /**
  * Servlet implementation class AjouterPaiement
  */
@@ -14,28 +21,51 @@ import javax.servlet.http.HttpServletResponse;
 public class AjouterPaiement extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+	private PaiementDao paiementDao;
+	private ClientDao clientDao;
+	
     public AjouterPaiement() {
         super();
-        // TODO Auto-generated constructor stub
+        paiementDao = DaoFactory.getInstance().getPaiementDao();
+        clientDao = DaoFactory.getInstance().getClientDao();
+        
+
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		try {
+			request.setAttribute("clients", clientDao.lister());
+		} catch (DaoException e) {
+			e.printStackTrace();
+		}
+		this.getServletContext().getRequestDispatcher("/WEB-INF/ajouterPaiement.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+		try {
+		int idClient = Integer.parseInt(request.getParameter("clientPaiement"));
+		int noCarte = Integer.parseInt(request.getParameter("noCartePaiement"));
+		int codeConfidentiel = Integer.parseInt(request.getParameter("codeConfidentielPaiement"));
+		String banque = request.getParameter("banquePaiement");
 
+			Paiement paiement = new Paiement();
+			paiement.setClient(clientDao.trouver(idClient));
+			paiement.setNoCarte(noCarte);
+			paiement.setCodeConfidentiel(codeConfidentiel);
+			paiement.setBanque(banque);
+			
+			paiementDao.creer(paiement);
+			
+		} catch (DaoException e) {
+			e.printStackTrace();
+		}
+		
+		response.sendRedirect( request.getContextPath() + "/ListePaiements" );		
+	}
+		
+			
+		
 }
+

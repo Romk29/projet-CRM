@@ -1,1 +1,60 @@
 @charset "ISO-8859-1";
+
+html, body { 
+    margin: 0; 
+    background-color: white;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: #2F4F4F;
+    border-bottom: solid 3px white;
+    padding-bottom: 60px;
+}
+
+a {
+    height: auto;
+    position : relative;
+    font-size: large;
+    text-decoration: none;
+    color: white;
+}
+
+form {
+    margin: 30px 300px 30px 300px;
+}
+
+.blocform {
+    display: block;
+}
+
+table {
+    border: solid 1px black;
+    margin: 50px auto auto auto;
+}
+
+td  {
+    border: solid 1px black;
+}
+
+form label {
+    font-weight: bold;
+}
+
+form div {
+    margin: 15px;
+    display: block;
+    text-align: center;
+}
+
+fieldset {
+    font-weight: bold;
+    background-color: #8FBC8F;
+}
+
+h1 {
+	text-align : center;
+}
