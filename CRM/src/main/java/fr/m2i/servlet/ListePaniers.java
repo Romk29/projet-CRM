@@ -7,35 +7,40 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class ListePaniers
- */
+import fr.m2i.dao.DaoException;
+import fr.m2i.dao.DaoFactory;
+import fr.m2i.dao.PanierDao;
+
+
 @WebServlet("/ListePaniers")
 public class ListePaniers extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+    private PanierDao panierDao;
+	
+	
+	
     public ListePaniers() {
         super();
-        // TODO Auto-generated constructor stub
+        panierDao = DaoFactory.getInstance().getPanierDao();        
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+try {
+			
+			request.setAttribute("listepaniers", panierDao.lister());
+			
+		} catch (DaoException e) {
+			e.printStackTrace();
+		}
+
+		this.getServletContext().getRequestDispatcher( "/WEB-INF/listePaniers.jsp").forward( request,response );
+		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+	
+	
 
 }

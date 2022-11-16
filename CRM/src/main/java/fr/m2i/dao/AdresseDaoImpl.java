@@ -15,12 +15,12 @@ import fr.m2i.model.Adresse;
 
 public class AdresseDaoImpl implements AdresseDao {
 
-	private static final String SQL_INSERT       = "INSERT INTO adresse(rue,ville,pays,codePostal) VALUES(?,?,?,?)";
-	private static final String SQL_SELECT       = "SELECT id,rue,ville,pays,codePostal FROM adresse";
-    private static final String SQL_SELECT_BY_ID = "SELECT id,rue,ville,pays,codePostal FROM adresse WHERE id = ?";
+	private static final String SQL_INSERT       = "INSERT INTO adresse(rue,ville,pays,code_postal) VALUES(?,?,?,?)";
+	private static final String SQL_SELECT       = "SELECT * FROM adresse";
+    private static final String SQL_SELECT_BY_ID = "SELECT * FROM adresse WHERE id = ? ";
 	private static final String SQL_DELETE_BY_ID = "DELETE FROM adresse WHERE id = ? ";
 	
-	private static final String SQL_UPDATE = "UPDATE adresse SET rue=?, ville=?, pays=?, codePostal=? WHERE id = ?";
+	private static final String SQL_UPDATE = "UPDATE adresse SET rue=?, ville=?, pays=?, code_postal=? WHERE id = ? ";
 	
 	private DaoFactory factory;
 	
@@ -71,7 +71,7 @@ public class AdresseDaoImpl implements AdresseDao {
 		try {
 			  con = factory.getConnection();
 			  pst = con.prepareStatement( SQL_SELECT_BY_ID );
-			  pst.setLong(1, id);
+			  pst.setInt(1, id);
 		      rs  = pst.executeQuery();
 		      if ( rs.next() ) {
 		    	  adresse = map(rs);
@@ -141,7 +141,7 @@ public class AdresseDaoImpl implements AdresseDao {
 				pst.setString( 2, adresse.getVille() );
 				pst.setString( 3, adresse.getPays() );
 				pst.setInt( 4, adresse.getCodePostal() );
-				pst.setLong( 5, adresse.getId() );
+				pst.setInt( 5, adresse.getId() );
 
 				int statut = pst.executeUpdate();
 
@@ -161,10 +161,10 @@ public class AdresseDaoImpl implements AdresseDao {
 	 private static Adresse map( ResultSet resultSet ) throws SQLException {
 		 Adresse a = new Adresse();
 	        a.setId( resultSet.getInt( "id" ) );
-	        a.setRue( resultSet.getString( "nom" ) );
+	        a.setRue( resultSet.getString( "rue" ) );
 	        a.setVille( resultSet.getString( "ville" ) );
 	        a.setPays( resultSet.getString( "pays" ) );
-	        a.setCodePostal( resultSet.getInt( "codePostal" ) );
+	        a.setCodePostal( resultSet.getInt( "code_postal" ) );
 	        return a;
 	    }
 	

@@ -11,18 +11,17 @@ import fr.m2i.dao.DaoException;
 import fr.m2i.dao.DaoFactory;
 import fr.m2i.dao.PanierDao;
 
-
-@WebServlet("/SupprimerPanier")
-public class SupprimerPanier extends HttpServlet {
+@WebServlet("/DetailsPanier")
+public class DetailsPanier extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     private PanierDao panierDao;
 	
-    public SupprimerPanier() {
+    public DetailsPanier() {
         super();
         panierDao = DaoFactory.getInstance().getPanierDao();
-    }
-    
+        
+   	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -30,18 +29,13 @@ public class SupprimerPanier extends HttpServlet {
 			
 			int id = Integer.parseInt((request.getParameter("id")));
 				
-			panierDao.supprimer(id);
+			request.setAttribute("panier", panierDao.trouver(id));
 			
 		} catch (DaoException e) {
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect(request.getContextPath() + "/ListePaniers");
-		
-		
+		this.getServletContext().getRequestDispatcher( "/WEB-INF/detailsPanier.jsp").forward( request,response );
 	}
-
-	
-	
 
 }
