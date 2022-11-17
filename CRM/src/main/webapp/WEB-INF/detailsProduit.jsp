@@ -17,12 +17,12 @@
 		<table>
 			<thead>
 				<tr>
-					<td class="th">Client</td>
+					<td class="th">Produit</td>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td><c:out value="${ produit.client.nom } ${ paiement.client.prenom}" /></td>
+					<td><c:out value="${ produit.nom }" /></td>
 					<td><c:out value="${ produit.description } " /></td>
 					<td><c:out value="${ produit.prix } " /></td>
 				</tr>				
