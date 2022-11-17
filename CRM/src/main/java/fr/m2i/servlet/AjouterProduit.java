@@ -46,52 +46,49 @@ public class AjouterProduit extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		Map<String, String> erreurs = new HashMap<String, String>();
+			
+			
+		String nom = request.getParameter("nomProduit");
+		String description = request.getParameter("descriptionProduit");
 		
-		String nom = request.getParameter("nom");
-		double prix = Double.parseDouble(request.getParameter("prix"));
-		String description = request.getParameter("description");
-		
-		if(nom != null) {
-			if(nom.length() < 2 || nom.length() > 50) {
-				erreurs.put("nomProduit", "Un nom doit contenir entre 2 et 50 caractères.");
-			}
-		} else {
+		double prix = 0;
+			
+		if (nom.length() == 0) {
 			erreurs.put("nomProduit", "Merci d'entrer un nom.");
 		}
 		
-		if(description != null) {
-			if(description.length() > 2 || description.length() > 200 ) {
-				erreurs.put("descriptionProduit", "Une description doit contenir entre 2 et 200 caractères.");
-			}
-			
-		if(prix == 0) {
-			erreurs.put("prixProduit", "Merci d'entrer un prix");
+		try {
+			prix = Double.parseDouble(request.getParameter("prixProduit"));
+		} catch (NumberFormatException e) {
+			erreurs.put("prixProduit", "Merci d'entrer 1 pour un prix.");
 		}
-		
-
-
+				
 			Produit produit = new Produit();
 			produit.setNom(nom);
 			produit.setPrix(prix);
 			produit.setDescription(description);
-
-			if(erreurs.isEmpty()) {
-				try {
-					produitDao.creer(produit);
-					
-					request.getSession().setAttribute("confirmMessage", "Le produit a bien été ajouté !");
-				} catch (DaoException e) {
-					e.printStackTrace();
-				}
+			
+		if (erreurs.isEmpty()) {
 				
-				response.sendRedirect( request.getContextPath() + "/ListeProduits" );
-			} 
-				request.setAttribute("produit", produit);
-				request.setAttribute("erreurs", erreurs);
-				
-				this.getServletContext().getRequestDispatcher("/WEB-INF/ajouterProduit.jsp").forward(request, response);
+			try {
+			
+			produitDao.creer(produit);
+			request.getSession().setAttribute("confirmMessage", "Le produit a bien été ajouté !");
+			
+			response.sendRedirect(request.getContextPath() + "/ListeProduits");
+		} catch(DaoException e) {
+			e.printStackTrace();
 		}
+		
+		} else {
+			request.setAttribute("produit", produit);
+			request.setAttribute("erreurs", erreurs);
+
+			this.getServletContext().getRequestDispatcher("/WEB-INF/ajouterProduit.jsp").forward(request, response);
+		}
+			
 	}
 
 }
