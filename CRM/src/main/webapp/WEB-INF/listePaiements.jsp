@@ -16,13 +16,13 @@
 		
 		<c:choose>
 			<c:when test="${ empty paiements }">
-				<p>Aucun paiements trouvé...</p>
+				<p>Aucun paiement trouvé...</p>
 			</c:when>
 			<c:otherwise>	
 				<table>
 					<thead>
 						<tr>
-							<td>No Carte</td>
+							<td>Numéro de Carte</td>
 							<td>Code confidentiel</td>
 							<td>Banque</td>
 						</tr>
@@ -47,7 +47,7 @@
 			</c:otherwise>
 		</c:choose>
 		
-		<span>${ sessionScope.confirmMessage }</span>
+	 <span>${ sessionScope.confirmMessage }</span> 
 				
 	</div>
 

@@ -12,7 +12,7 @@
 
 	<div class="view">
 		
-		<form method="POST" action="<c:url value="/ModifierPaiement"><c:param name="id" value="${ paiement.id}" /></c:url>">
+		<form method="POST" action="<c:url value="/ModifierPaiement"><c:param name="id" value="${ paiement.id }" /></c:url>">
 		
 			<fieldset>
 				<legend>Modifier un paiement</legend>

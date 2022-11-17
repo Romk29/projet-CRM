@@ -34,7 +34,7 @@ public class ModifierPaiement extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			int id = Integer.parseInt(request.getParameter("id"));
-			request.setAttribute("paiements", paiementDao.trouver(id));
+			request.setAttribute("paiement", paiementDao.trouver(id));
 			request.setAttribute("clients", clientDao.lister());
 		} catch (DaoException e) {
 			e.printStackTrace();
@@ -45,6 +45,7 @@ public class ModifierPaiement extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		int id = Integer.parseInt(request.getParameter("id"));
 		int idClient = Integer.parseInt(request.getParameter("clientPaiement"));
 		int noCarte = Integer.parseInt(request.getParameter("noCartePaiement"));
@@ -58,7 +59,7 @@ public class ModifierPaiement extends HttpServlet {
 			paiement.setCodeConfidentiel(codeConfidentiel);
 			paiement.setBanque(banque);
 			
-			paiementDao.creer(paiement);
+			paiementDao.miseAJour(paiement);
 		} catch (DaoException e) {
 			e.printStackTrace();
 		}

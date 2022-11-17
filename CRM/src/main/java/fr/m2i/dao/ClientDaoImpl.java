@@ -14,7 +14,7 @@ public class ClientDaoImpl implements ClientDao {
 	
 	private static final String SQL_INSERT       = "INSERT INTO client(id_adresse, nom_societe, mail, nom, prenom, telephone, etat, genre) VALUES(?,?,?,?,?,?,?,?)";
 	private static final String SQL_SELECT       = "SELECT id, id_adresse, nom_societe, mail, nom, prenom, telephone, etat, genre FROM client";
-    private static final String SQL_SELECT_BY_ID = "SELECT id, id_adresse, nom_societe, mail, nom, prenom, telephone, etat, genre FROM client FROM client WHERE id = ?";
+    private static final String SQL_SELECT_BY_ID = "SELECT id, id_adresse, nom_societe, mail, nom, prenom, telephone, etat, genre FROM client WHERE id = ?";
 	private static final String SQL_DELETE_BY_ID = "DELETE FROM client WHERE id = ? ";
 	private static final String SQL_UPDATE       = "UPDATE client SET id_adresse=?, nom_societe=?, mail=?, nom=?, prenom=?, telephone=?, etat=?, genre=? WHERE id = ?";
 	
@@ -174,9 +174,9 @@ public class ClientDaoImpl implements ClientDao {
 			pst.setString(4, client.getNom());
 			pst.setString(5, client.getPrenom());
 			pst.setString(6, client.getTelephone());
-			pst.setInt(5, client.getEtat());
-			pst.setInt(5, client.getGenre());
-			pst.setInt(5, client.getId());
+			pst.setInt(7, client.getEtat());
+			pst.setInt(8, client.getGenre());
+			pst.setInt(9, client.getId());
 			
 			int statut = pst.executeUpdate();
 			if(statut == 0) {

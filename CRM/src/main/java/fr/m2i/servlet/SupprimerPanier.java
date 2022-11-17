@@ -7,35 +7,41 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class SupprimerPanier
- */
+import fr.m2i.dao.DaoException;
+import fr.m2i.dao.DaoFactory;
+import fr.m2i.dao.PanierDao;
+
+
 @WebServlet("/SupprimerPanier")
 public class SupprimerPanier extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+    private PanierDao panierDao;
+	
     public SupprimerPanier() {
         super();
-        // TODO Auto-generated constructor stub
+        panierDao = DaoFactory.getInstance().getPanierDao();
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+    
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		try {
+			
+			int id = Integer.parseInt((request.getParameter("id")));
+				
+			panierDao.supprimer(id);
+			
+		} catch (DaoException e) {
+			e.printStackTrace();
+		}
+		
+		response.sendRedirect(request.getContextPath() + "/ListePaniers");
+		
+		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+	
+	
 
 }
