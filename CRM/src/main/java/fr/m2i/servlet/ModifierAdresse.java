@@ -18,7 +18,7 @@ import fr.m2i.model.Adresse;
 /**
  * Servlet implementation class AjouterAdresse
  */
-@WebServlet("/modifierAdresse")
+@WebServlet("/ModifierAdresse")
 public class ModifierAdresse extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -50,7 +50,7 @@ public class ModifierAdresse extends HttpServlet {
 		String rue = request.getParameter("rueAdresse");
 		String ville = request.getParameter("villeAdresse");
 		String pays = request.getParameter("paysAdresse");
-		int codePostal = Integer.parseInt(request.getParameter("codePostal"));
+		int codePostal = Integer.parseInt(request.getParameter("codePostalAdresse"));
 		/*
 		 * //Ajout des contrôles if(nom != null) { if(nom.length() < 2 || nom.length() >
 		 * 20) { erreurs.put("nomAdresse",
@@ -91,7 +91,7 @@ public class ModifierAdresse extends HttpServlet {
 			// Ajout d'un élément dans la session
 			request.getSession().setAttribute("confirmMessage", "L'adresse a bien été modifié !");
 
-			response.sendRedirect(request.getContextPath() + "/listeAdresses");
+			response.sendRedirect(request.getContextPath() + "/ListeAdresses");
 		} catch (DaoException e) {
 			e.printStackTrace();
 		}
@@ -99,7 +99,7 @@ public class ModifierAdresse extends HttpServlet {
 		// request.setAttribute("adresse", adresse);
 		// request.setAttribute("erreurs", erreurs);
 
-		this.getServletContext().getRequestDispatcher("/WEB-INF/modifierAdresse.jsp").forward(request, response);
+	//	this.getServletContext().getRequestDispatcher("/WEB-INF/modifierAdresse.jsp").forward(request, response);
 	}
 
 }

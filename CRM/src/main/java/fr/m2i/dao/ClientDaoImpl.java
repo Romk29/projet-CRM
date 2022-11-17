@@ -174,9 +174,9 @@ public class ClientDaoImpl implements ClientDao {
 			pst.setString(4, client.getNom());
 			pst.setString(5, client.getPrenom());
 			pst.setString(6, client.getTelephone());
-			pst.setInt(5, client.getEtat());
-			pst.setInt(5, client.getGenre());
-			pst.setInt(5, client.getId());
+			pst.setInt(7, client.getEtat());
+			pst.setInt(8, client.getGenre());
+			pst.setInt(9, client.getId());
 			
 			int statut = pst.executeUpdate();
 			if(statut == 0) {

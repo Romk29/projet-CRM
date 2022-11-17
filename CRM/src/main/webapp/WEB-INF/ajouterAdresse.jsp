@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +10,7 @@
 	href="<c:url value="/inc/style.css" />" />
 </head>
 <body>
+
 	<c:import url="/WEB-INF/menu.jsp" />
 
 	<div class="view">
@@ -18,7 +18,7 @@
 		<form method="POST" action="<c:url value="/ajouterAdresse" />">
 			
 			<fieldset>
-				<legend>Ajouter un adresse</legend>
+				<legend>Ajouter une adresse</legend>
 		
 				<c:import url="/WEB-INF/adresse_form.jsp" />
 			</fieldset>
