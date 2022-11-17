@@ -39,7 +39,7 @@ public class ListeAdresses extends HttpServlet {
 
 		this.getServletContext().getRequestDispatcher("/WEB-INF/listeAdresses.jsp").forward(request, response);
 
-		// request.getSession().removeAttribute("confirmMessage");
+		 request.getSession().removeAttribute("confirmMessage");
 	}
 
 
