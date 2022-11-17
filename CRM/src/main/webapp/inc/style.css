@@ -3,6 +3,19 @@
 html, body { 
     margin: 0; 
     background-color: white;
+    	overflow: hidden;
+    	height: 100%;
+}
+
+body {
+	background-size: cover;
+	background-position: center;
+  	background-repeat: no-repeat;
+  	background-color: #c6dddd;
+}
+
+.erreur {
+	color: red;
 }
 
 nav {
@@ -52,9 +65,82 @@ form div {
 
 fieldset {
     font-weight: bold;
-    background-color: #8FBC8F;
+    background-color: #86b7b7;
 }
 
 h1 {
 	text-align : center;
 }
+
+/* MENU */
+.menu {
+	max-width: 800px;
+	margin: auto;
+	padding: 10px;
+	border: thick solid #86b7b7;
+}
+.menu h1 {
+	text-align: center;
+}
+.menu ul {
+  max-width: 600px;
+  list-style-type: none;
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.menu li {
+  float: left;
+  width: 150px;
+}
+
+.menu li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.menu li a:hover {
+  background-color: #86b7b7;
+}
+
+.menu li .active {
+  background-color: #86b7b7;
+}
+/* END MENU */
+
+/* VIEW */
+.view {
+	text-align: center;
+}
+.view table {
+	margin: auto;
+	margin-top: 50px;
+	border: solid;
+}
+.view td {
+	padding: 10px;
+	border: solid;
+}
+.view .pair {
+	background-color: white;
+}
+
+.view .impair {
+	background-color: #86b7b7;
+}
+
+.view button {
+	margin-top: 50px;
+}
+
+.view fieldset {
+	max-width: 800px;
+	margin: auto;
+}
+/* END VIEW */
