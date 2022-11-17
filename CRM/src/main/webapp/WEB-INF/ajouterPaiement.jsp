@@ -5,9 +5,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Ajouter paiements</title>
+<title>Application CRM</title>
 </head>
 <body>
+
+	<h1>Ajouter un paiement</h1>
+
 	<c:import url="/WEB-INF/menu.jsp" />
 	
 		<div class="view">

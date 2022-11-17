@@ -5,10 +5,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Ajouter client</title>
+<title>Application CRM</title>
 <link rel="stylesheet" href="<c:url value="/inc/style.css" />" />
 </head>
 <body>
+
+	<h1>Ajouter un client</h1>
 
 	<c:import url="/WEB-INF/menu.jsp" />
 	

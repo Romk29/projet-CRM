@@ -5,21 +5,24 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Liste clients</title>
+<title>Application CRM</title>
 <link rel="stylesheet" href="<c:url value="/inc/style.css" />" />
 </head>
 <body>
 
+	<h1>Clients enregistrés</h1>
+	
 	<c:import url="/WEB-INF/menu.jsp" />
 	
 	<div class="view">
+	
 	
 	<c:choose>
 		<c:when test="${ empty clients }">
 			<p>Aucun client trouvé...</p>
 		</c:when>
 		<c:otherwise>
-			<h1>Clients :</h1>
+			
 			<table>
 				<thead>
 					<tr>

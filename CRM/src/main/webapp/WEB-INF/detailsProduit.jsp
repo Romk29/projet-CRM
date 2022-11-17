@@ -13,21 +13,27 @@
 	<h1>Détails Produit</h1>
 	
 	<c:import url="/WEB-INF/menu.jsp" />
+	
+	<div class="view">
 		
 		<table>
 			<thead>
 				<tr>
 					<td class="th">Produit</td>
+					<td class="th">Description</td>
+					<td class="th">Prix</td>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
+				<tr class="pair">
 					<td><c:out value="${ produit.nom }" /></td>
 					<td><c:out value="${ produit.description } " /></td>
 					<td><c:out value="${ produit.prix } " /></td>
 				</tr>				
 			</tbody>
 		</table>
+		
+	</div>
 	
 </body>
 </html>

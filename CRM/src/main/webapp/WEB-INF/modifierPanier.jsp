@@ -9,14 +9,21 @@
 <link type="text/css" rel="stylesheet" href="<c:url value="/inc/style.css" />" />
 </head>
 <body>
+
+	<h2>Modifier un panier</h2>
 	
 	<c:import url="/WEB-INF/menu.jsp" />
 	
 	<div class="view">
 
 	<form name="ModifPanier" method="POST" action="<c:url value="/ModifierPanier"><c:param name="id" value ="${ panier.id }" /></c:url>">    
-            
-    <c:import url="/WEB-INF/panier_form.jsp" /> 
+        
+    	<fieldset>
+			<legend>Modifier un paiement</legend>
+			    
+    			<c:import url="/WEB-INF/panier_form.jsp" /> 
+    	
+    	</fieldset>
     			          
     </form>
 
