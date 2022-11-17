@@ -12,8 +12,6 @@
 	
 		<div class="view">
 		
-		<a href="<c:url value="/AjouterPaiement" />"><button>Ajouter un paiement</button></a>
-		
 		<c:choose>
 			<c:when test="${ empty paiements }">
 				<p>Aucun paiement trouvé...</p>
@@ -22,9 +20,10 @@
 				<table>
 					<thead>
 						<tr>
-							<td>Numéro de Carte</td>
-							<td>Code confidentiel</td>
-							<td>Banque</td>
+							<td class="th">Numéro de Carte</td>
+							<td class="th">Code confidentiel</td>
+							<td class="th">Banque</td>
+							<td class="th">Actions</td>
 						</tr>
 					</thead>
 					<tbody>
@@ -34,11 +33,9 @@
 								<td><c:out value="${ paiement.codeConfidentiel}" /></td>
 								<td><c:out value="${ paiement.banque}" /></td>
 								<td>
-									<a href="<c:url value="/DetailsPaiement"><c:param name="id" value="${ paiement.id}" /></c:url>">Voir</a>
-									|
-									<a href="<c:url value="/ModifierPaiement"><c:param name="id" value="${ paiement.id}" /></c:url>">Modifier</a>
-									|
-									<a href="<c:url value="/SupprimerPaiement"><c:param name="id" value="${ paiement.id}" /></c:url>">Supprimer</a>
+									<a href="<c:url value="/DetailsPaiement"><c:param name="id" value="${ paiement.id}" /></c:url>"><img src="./inc/voir.png" alt="icone voir"></a>
+									<a href="<c:url value="/ModifierPaiement"><c:param name="id" value="${ paiement.id}" /></c:url>"><img src="./inc/modifier.png" alt="icone modifier"></a>
+									<a href="<c:url value="/SupprimerPaiement"><c:param name="id" value="${ paiement.id}" /></c:url>"><img src="./inc/supprimer.png" alt="icone supprimer"></a>
 								</td>
 							</tr>
 						</c:forEach>
@@ -46,6 +43,8 @@
 				</table>
 			</c:otherwise>
 		</c:choose>
+		
+		<a href="<c:url value="/AjouterPaiement" />"><button id="ajout">Ajouter un paiement</button></a>
 		
 	 <span>${ sessionScope.confirmMessage }</span> 
 				
