@@ -11,32 +11,35 @@ import fr.m2i.dao.DaoException;
 import fr.m2i.dao.DaoFactory;
 import fr.m2i.dao.ProduitDao;
 
-
-@WebServlet("/ListeProduits")
-public class ListeProduits extends HttpServlet {
+/**
+ * Servlet implementation class DetailsProduit
+ */
+@WebServlet("/DetailsProduit")
+public class DetailsProduit extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    private ProduitDao produitDao;
 	
-    public ListeProduits() {
+	private ProduitDao produitDao;
+       
+
+    public DetailsProduit() {
         super();
         produitDao = DaoFactory.getInstance().getProduitDao();
+ 
     }
 
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-try {
-			
-			request.setAttribute("listeproduits", produitDao.lister());
+
+		try {
+			int id = Integer.parseInt((request.getParameter("id")));
+				
+			request.setAttribute("produit", produitDao.trouver(id));
 			
 		} catch (DaoException e) {
 			e.printStackTrace();
 		}
-
-		this.getServletContext().getRequestDispatcher( "/WEB-INF/listeProduits.jsp").forward( request,response );
 		
+		this.getServletContext().getRequestDispatcher( "/WEB-INF/detailsProduit.jsp").forward( request,response );
 	}
-	
 
 }

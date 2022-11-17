@@ -5,20 +5,29 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Application CRM</title>
+<title> Application CRM</title>
 <link type="text/css" rel="stylesheet" href="<c:url value="/inc/style.css" />" />
 </head>
 <body>
 
-	<h1>Modifier un panier</h1>
+	<h1>Détails Produit</h1>
 	
 	<c:import url="/WEB-INF/menu.jsp" />
-
-	<form name="ModifPanier" method="POST" action="<c:url value="/ModifierPanier"><c:param name="id" value ="${ panier.id }" /></c:url>">    
-            
-    <c:import url="/WEB-INF/panier_Form.jsp" /> 
-    			          
-    </form>
+		
+		<table>
+			<thead>
+				<tr>
+					<td class="th">Produit</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><c:out value="${ produit.nom }" /></td>
+					<td><c:out value="${ produit.description } " /></td>
+					<td><c:out value="${ produit.prix } " /></td>
+				</tr>				
+			</tbody>
+		</table>
 	
 </body>
 </html>

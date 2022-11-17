@@ -22,7 +22,7 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><c:out value="${ panier.client.nom }" /></td>
+					<td><c:out value="${ panier.client.nom } ${ paiement.client.prenom}" /></td>
 					
 				</tr>				
 			</tbody>
