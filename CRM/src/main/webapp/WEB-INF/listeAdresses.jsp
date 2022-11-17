@@ -15,11 +15,11 @@
 
 	<div class="view">
 		
-		<a href="<c:url value="/ajouterAdresse" />"><button>Ajouter un adresse</button></a>
+		<a href="<c:url value="/ajouterAdresse" />"><button>Ajouter une adresse</button></a>
 		
 		<c:choose>
 			<c:when test="${ empty adresses }">
-				<p>Aucun adresse trouvé...</p>
+				<p>Aucun adresse trouvée...</p>
 			</c:when>
 			<c:otherwise>	
 				<table>
@@ -28,7 +28,7 @@
 							<td>Rue</td>
 							<td>Ville</td>
 							<td>Pays</td>
-							<td>codePostal</td>
+							<td>Code Postal</td>
 						</tr>
 					</thead>
 					<tbody>
@@ -39,11 +39,11 @@
 								<td><c:out value="${ adresse.pays}" /></td>
 								<td><c:out value="${ adresse.codePostal}" /></td>
 								<td>
-									<a href="<c:url value="/detailsAdresse"><c:param name="id" value="${ adresse.id}" /></c:url>">Voir</a>
+									<a href="<c:url value="/DetailsAdresse"><c:param name="id" value="${ adresse.id}" /></c:url>">Voir</a>
 									|
-									<a href="<c:url value="/modifierAdresse"><c:param name="id" value="${ adresse.id}" /></c:url>">Modifier</a>
+									<a href="<c:url value="/ModifierAdresse"><c:param name="id" value="${ adresse.id}" /></c:url>">Modifier</a>
 									|
-									<a href="<c:url value="/supprimerAdresse"><c:param name="id" value="${ adresse.id}" /></c:url>">Supprimer</a>
+									<a href="<c:url value="/SupprimerAdresse"><c:param name="id" value="${ adresse.id}" /></c:url>">Supprimer</a>
 								</td>
 							</tr>
 						</c:forEach>

@@ -151,13 +151,13 @@ public class PanierDaoImpl implements PanierDao {
 			int statut = ps.executeUpdate();
 
             if ( statut == 0 ) {
-                throw new DaoException( "Echec cr�ation Panier (aucun ajout)" );
+                throw new DaoException( "Echec maj Panier (aucun ajout)" );
             }
             
 			ps.close();
 			
 	    } catch(SQLException ex) {
-	    	throw new DaoException("Echec cr�ation LPanier",ex);
+	    	throw new DaoException("Echec maj Panier",ex);
 	    } finally {
 	    	factory.releaseConnection(con);
 		}

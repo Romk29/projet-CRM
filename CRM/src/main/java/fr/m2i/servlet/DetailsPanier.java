@@ -7,39 +7,35 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.m2i.dao.ClientDao;
 import fr.m2i.dao.DaoException;
 import fr.m2i.dao.DaoFactory;
+import fr.m2i.dao.PanierDao;
 
-/**
- * Servlet implementation class ListeClients
- */
-@WebServlet("/ListeClients")
-public class ListeClients extends HttpServlet {
+@WebServlet("/DetailsPanier")
+public class DetailsPanier extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	private ClientDao clientDao;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ListeClients() {
+    private PanierDao panierDao;
+	
+    public DetailsPanier() {
         super();
-        clientDao = DaoFactory.getInstance().getClientDao();
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+        panierDao = DaoFactory.getInstance().getPanierDao();
+        
+   	}
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		try {
-			request.setAttribute("clients", clientDao.lister());
+			
+			int id = Integer.parseInt((request.getParameter("id")));
+				
+			request.setAttribute("panier", panierDao.trouver(id));
+			
 		} catch (DaoException e) {
 			e.printStackTrace();
 		}
 		
-		this.getServletContext().getRequestDispatcher("/WEB-INF/listeClients.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher( "/WEB-INF/detailsPanier.jsp").forward( request,response );
 	}
 
 }
