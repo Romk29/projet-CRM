@@ -16,20 +16,20 @@
 		<div class="blocfrom">
 			<label for="nomProduit">Nom :</label> <input id="nomProduit" name="nomProduit" type="text"
 				value="<c:out value="${ produit.nom }"/>" />
-				<span class="erreur">${ erreurs['nom'] }</span>
+				<span class="erreur">${ erreurs['nomProduit'] }</span>
 		</div>
 
 		<div class="blocfrom">
 			<label for="descriptionProduit">Description :</label> <input id="descriptionProduit" name="descriptionProduit"
 				type="text" value="<c:out value="${ produit.description }"/>" />
-				<span class="erreur">${ erreurs['description'] }</span>
+				<span class="erreur">${ erreurs['descriptionProduit'] }</span>
 		</div>
 
 		<div class="blocfrom">
 			<label for="prixProduit">Prix :</label> <input
 				id="prixProduit" name="prixProduit" type="text"
 				value="<c:out value="${ produit.prix }"/>" />
-				<span class="erreur">${ erreurs['prix'] }</span>
+				<span class="erreur">${ erreurs['prixProduit'] }</span>
 		</div>
 
 		<div>
