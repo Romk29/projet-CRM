@@ -21,6 +21,8 @@
     <c:import url="/WEB-INF/panier_form.jsp" /> 
     			          
     </form>
+
+	</div>
 	
 </body>
 </html>

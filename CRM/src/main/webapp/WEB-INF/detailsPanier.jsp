@@ -24,8 +24,7 @@
 			</thead>
 			<tbody>
 				<tr class="pair">
-					<td><c:out value="${ panier.client.nom } ${ panier.client.prenom}" /></td>
-					
+					<td><c:out value="${ panier.client.nom } ${ paiement.client.prenom}" /></td>								
 				</tr>				
 			</tbody>
 		</table>

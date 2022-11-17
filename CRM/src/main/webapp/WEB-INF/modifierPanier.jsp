@@ -14,19 +14,13 @@
 	
 	<div class="view">
 
-		<form name="ModifPanier" method="POST" action="<c:url value="/ModifierPanier"><c:param name="id" value ="${ panier.id }" /></c:url>">
-		
-			<fieldset>
-				<legend>Modifier un panier</legend>
-				<c:import url="/WEB-INF/panier_form.jsp" /> 
-	        </fieldset>
-	        
-	        <input type="submit" value="Valider">
-	        <input type="reset" value="Remettre � z�ro">
-	    			          
-	    </form>
-    
-    </div>
+	<form name="ModifPanier" method="POST" action="<c:url value="/ModifierPanier"><c:param name="id" value ="${ panier.id }" /></c:url>">    
+            
+    <c:import url="/WEB-INF/panier_form.jsp" /> 
+    			          
+    </form>
+
+	</div>
 	
 </body>
 </html>

@@ -19,7 +19,7 @@ import fr.m2i.model.Adresse;
 /**
  * Servlet implementation class AjouterAdresse
  */
-@WebServlet("/ajouterAdresse")
+@WebServlet("/AjouterAdresse")
 public class AjouterAdresse extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -47,17 +47,17 @@ public class AjouterAdresse extends HttpServlet {
 		// Ajout des contrôles
 		if (rue.length() == 0) {
 
-			erreurs.put("rueAdresse", "Merci d'entrer le rue.");
+			erreurs.put("rueAdresse", "Merci d'entrer une rue.");
 		}
 
 		if (ville.length() == 0) {
 
-			erreurs.put("villeAdresse", "Merci d'entrer le rue.");
+			erreurs.put("villeAdresse", "Merci d'entrer une ville.");
 		}
 
 		if (pays.length() == 0) {
 
-			erreurs.put("paysAdresse", "Merci d'entrer une pays de adresse.");
+			erreurs.put("paysAdresse", "Merci d'entrer un pays.");
 		}
 		
 		Pattern patternAdress = Pattern.compile("[0-9]{5}");
