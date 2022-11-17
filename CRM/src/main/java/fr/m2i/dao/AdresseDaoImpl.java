@@ -39,7 +39,7 @@ public class AdresseDaoImpl implements AdresseDao {
 			pst.setString( 1, adresse.getRue() );
 			pst.setString( 2, adresse.getVille() );
 			pst.setString( 3, adresse.getPays() );
-			pst.setInt( 4, adresse.getCodePostal() );
+			pst.setString( 4, adresse.getCodePostal() );
 			
 			int statut = pst.executeUpdate();
 
@@ -140,7 +140,7 @@ public class AdresseDaoImpl implements AdresseDao {
 				pst.setString( 1, adresse.getRue() );
 				pst.setString( 2, adresse.getVille() );
 				pst.setString( 3, adresse.getPays() );
-				pst.setInt( 4, adresse.getCodePostal() );
+				pst.setString( 4, adresse.getCodePostal() );
 				pst.setInt( 5, adresse.getId() );
 
 				int statut = pst.executeUpdate();
@@ -164,7 +164,7 @@ public class AdresseDaoImpl implements AdresseDao {
 	        a.setRue( resultSet.getString( "rue" ) );
 	        a.setVille( resultSet.getString( "ville" ) );
 	        a.setPays( resultSet.getString( "pays" ) );
-	        a.setCodePostal( resultSet.getInt( "code_postal" ) );
+	        a.setCodePostal( resultSet.getString( "code_postal" ) );
 	        return a;
 	    }
 	
