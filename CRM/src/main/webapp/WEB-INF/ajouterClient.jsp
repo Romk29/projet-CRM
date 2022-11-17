@@ -14,7 +14,7 @@
 	
 	<h2>Ajouter un client</h2>
 	
-	<form method="POST" action="<c:url value="/ajouterClient" />">
+	<form method="POST" action="<c:url value="/AjouterClient" />">
 	
 		<c:import url="/WEB-INF/client_form.jsp" />
 		
