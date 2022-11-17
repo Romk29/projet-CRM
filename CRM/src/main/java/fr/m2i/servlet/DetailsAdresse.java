@@ -7,26 +7,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.m2i.dao.ProduitDao;
+import fr.m2i.dao.AdresseDao;
 import fr.m2i.dao.DaoException;
 import fr.m2i.dao.DaoFactory;
 
+
 /**
- * Servlet implementation class SupprimerProduit
+ * Servlet implementation class DetailsAdresse
  */
-@WebServlet("/SupprimerProduit")
-public class SupprimerProduit extends HttpServlet {
+@WebServlet("/DetailsAdresse")
+public class DetailsAdresse extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	private ProduitDao produitDao;
        
+	private AdresseDao adresseDao;
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SupprimerProduit() {
-    	super();
-    	produitDao = DaoFactory.getInstance().getProduitDao();
-    	
+    public DetailsAdresse() {
+        super();
+        adresseDao = DaoFactory.getInstance().getAdresseDao();
         // TODO Auto-generated constructor stub
     }
 
@@ -34,17 +33,17 @@ public class SupprimerProduit extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			int id = Integer.parseInt(request.getParameter("id"));
-			produitDao.supprimer(id);
+	try {
 			
-			//Ajout d'un élément dans la session
-			request.getSession().setAttribute("confirmMessage", "L'produit a bien été supprimé !");
+			int id = Integer.parseInt((request.getParameter("id")));
+				
+			request.setAttribute("adresse", adresseDao.trouver(id));
+			
 		} catch (DaoException e) {
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect( request.getContextPath() + "/ListeProduits" );
+		this.getServletContext().getRequestDispatcher( "/WEB-INF/detailsAdresse.jsp").forward( request,response );
 	}
 
 	/**
