@@ -35,8 +35,8 @@ public class PaiementDaoImpl implements PaiementDao {
 			con = factory.getConnection();
 			
 			PreparedStatement pst = con.prepareStatement( SQL_INSERT, Statement.RETURN_GENERATED_KEYS );
-			pst.setInt( 1, paiement.getNoCarte() );
-			pst.setInt( 2, paiement.getCodeConfidentiel() );
+			pst.setString( 1, paiement.getNoCarte() );
+			pst.setString( 2, paiement.getCodeConfidentiel() );
 			pst.setString( 3, paiement.getBanque() );
 			pst.setInt( 4, paiement.getClient().getId() );
 			
@@ -139,8 +139,8 @@ public class PaiementDaoImpl implements PaiementDao {
 			PreparedStatement pst = con.prepareStatement( SQL_UPDATE );
 
 			pst.setInt( 1, paiement.getClient().getId() );
-			pst.setInt( 2, paiement.getNoCarte());
-			pst.setInt( 3, paiement.getCodeConfidentiel() );
+			pst.setString( 2, paiement.getNoCarte());
+			pst.setString( 3, paiement.getCodeConfidentiel() );
 			pst.setString( 4, paiement.getBanque());
 			pst.setInt( 5, paiement.getId() );
 			
@@ -169,8 +169,8 @@ public class PaiementDaoImpl implements PaiementDao {
 			e.printStackTrace();
 		}
         
-        p.setNoCarte(resultSet.getInt( "no_carte" ));
-        p.setCodeConfidentiel(resultSet.getInt( "code_confidentiel" ));
+        p.setNoCarte(resultSet.getString( "no_carte" ));
+        p.setCodeConfidentiel(resultSet.getString( "code_confidentiel" ));
         p.setBanque(resultSet.getString( "banque" ));
   
 		return p;
