@@ -15,7 +15,7 @@
 
 	<div class="view">
 		
-		<form method="POST" action="<c:url value="/ajouterAdresse" />">
+		<form method="POST" action="<c:url value="/AjouterAdresse" />">
 			
 			<fieldset>
 				<legend>Ajouter une adresse</legend>
