@@ -32,8 +32,8 @@ public class ProduitDaoImpl implements ProduitDao {
 			
 			PreparedStatement pst = con.prepareStatement( SQL_INSERT, Statement.RETURN_GENERATED_KEYS );
 			pst.setString( 1, produit.getNom() );
-			pst.setString( 1, produit.getDescription() );
-			pst.setDouble( 1, produit.getPrix() );
+			pst.setString( 2, produit.getDescription() );
+			pst.setDouble( 3, produit.getPrix() );
 			
 			int statut = pst.executeUpdate();
 
@@ -149,7 +149,7 @@ public class ProduitDaoImpl implements ProduitDao {
 			pst.setString( 1, produit.getNom() );
 			pst.setString( 2, produit.getDescription() );
 			pst.setDouble( 3, produit.getPrix() );
-			pst.setLong( 5, produit.getId() );
+			pst.setInt( 4, produit.getId() );
 			
 			int statut = pst.executeUpdate();
 
