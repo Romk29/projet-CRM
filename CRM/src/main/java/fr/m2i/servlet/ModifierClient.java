@@ -145,14 +145,15 @@ Map<String, String> erreurs = new HashMap<String, String>();
 		} else {
 			
 			try {
-				request.setAttribute("adresseClient", adresseDao.lister());
+				id = Integer.parseInt(request.getParameter("id"));
+				request.setAttribute("client", clientDao.trouver(id));
+				request.setAttribute("adresses", adresseDao.lister());
+				request.setAttribute("erreurs", erreurs);
 			} catch (DaoException e) {
 				e.printStackTrace();
 			}
-			request.setAttribute("client", client);
-			request.setAttribute("erreurs", erreurs);
-
-			this.getServletContext().getRequestDispatcher("/WEB-INF/ajouterClient.jsp").forward(request, response);
+			
+			this.getServletContext().getRequestDispatcher("/WEB-INF/modifierClient.jsp").forward(request, response);
 		}
 	}
 
