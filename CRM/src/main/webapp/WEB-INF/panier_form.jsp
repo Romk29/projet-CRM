@@ -22,6 +22,8 @@
 							</option>
 						</c:forEach>
 					</select>
+					<span class="erreur">${ erreurs['clientPanier'] }</span>
+<br/>
 			</div> 
 
 		<div>
