@@ -46,8 +46,8 @@ public class AjouterPaiement extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 		int idClient = Integer.parseInt(request.getParameter("clientPaiement"));
-		int noCarte = Integer.parseInt(request.getParameter("noCartePaiement"));
-		int codeConfidentiel = Integer.parseInt(request.getParameter("codeConfidentielPaiement"));
+		String noCarte = request.getParameter("noCartePaiement");
+		String codeConfidentiel = request.getParameter("codeConfidentielPaiement");
 		String banque = request.getParameter("banquePaiement");
 
 			Paiement paiement = new Paiement();
@@ -55,7 +55,6 @@ public class AjouterPaiement extends HttpServlet {
 			paiement.setNoCarte(noCarte);
 			paiement.setCodeConfidentiel(codeConfidentiel);
 			paiement.setBanque(banque);
-			
 			paiementDao.creer(paiement);
 			
 		} catch (DaoException e) {
