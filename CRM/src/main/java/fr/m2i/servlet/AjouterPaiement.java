@@ -56,12 +56,14 @@ public class AjouterPaiement extends HttpServlet {
 			paiement.setCodeConfidentiel(codeConfidentiel);
 			paiement.setBanque(banque);
 			paiementDao.creer(paiement);
+			request.getSession().setAttribute("confirmMessage", "Le paiement a bien été ajoutée !");
+			response.sendRedirect( request.getContextPath() + "/ListePaiements" );
 			
 		} catch (DaoException e) {
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect( request.getContextPath() + "/ListePaiements" );		
+				
 	}
 		
 			

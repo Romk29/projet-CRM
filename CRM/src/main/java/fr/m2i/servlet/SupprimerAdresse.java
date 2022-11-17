@@ -33,8 +33,8 @@ public class SupprimerAdresse extends HttpServlet {
 			int id = Integer.parseInt(request.getParameter("id"));
 			adresseDao.supprimer(id);
 			
-			//Ajout d'un élément dans la session
-			request.getSession().setAttribute("confirmMessage", "L'adresse a bien été supprimé !");
+			
+			request.getSession().setAttribute("confirmMessage", "L'adresse a bien été supprimée !");
 		} catch (DaoException e) {
 			e.printStackTrace();
 		}

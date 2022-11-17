@@ -32,6 +32,8 @@ public class SupprimerPanier extends HttpServlet {
 				
 			panierDao.supprimer(id);
 			
+			request.getSession().setAttribute("confirmMessage", "Le panier a bien été supprimé !");
+			
 		} catch (DaoException e) {
 			e.printStackTrace();
 		}

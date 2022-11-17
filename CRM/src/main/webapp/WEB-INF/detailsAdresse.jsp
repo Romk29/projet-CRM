@@ -5,12 +5,16 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Détails adresse</title>
+<title>Application CRM</title>
 <link rel="stylesheet" href="<c:url value="/inc/style.css" />" />
 </head>
 <body>
 
+	<h1>Détails Adresse</h1>
+
 	<c:import url="/WEB-INF/menu.jsp" />
+	
+	<div class="view">
 	
 	<table>
 		<thead>
@@ -32,6 +36,8 @@
 			</tr>
 		</tbody>
 	</table>
+	
+	</div>
 
 </body>
 </html>

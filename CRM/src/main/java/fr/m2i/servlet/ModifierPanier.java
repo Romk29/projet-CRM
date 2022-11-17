@@ -54,6 +54,8 @@ public class ModifierPanier extends HttpServlet {
 		panier1.setClient(client1);
 						
 		panierDao.miseAJour(panier1);
+		
+		request.getSession().setAttribute("confirmMessage", "Le panier a bien été modifié !");
 			
 		} catch (NumberFormatException e) {
 			e.printStackTrace();

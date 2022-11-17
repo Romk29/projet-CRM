@@ -60,6 +60,7 @@ public class ModifierPaiement extends HttpServlet {
 			paiement.setBanque(banque);
 			
 			paiementDao.miseAJour(paiement);
+			request.getSession().setAttribute("confirmMessage", "Le paiement a bien été modifié !");
 		} catch (DaoException e) {
 			e.printStackTrace();
 		}

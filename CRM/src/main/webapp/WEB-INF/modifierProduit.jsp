@@ -13,12 +13,16 @@
 	<h1>Modifier un produit</h1>
 	
 	<c:import url="/WEB-INF/menu.jsp" />
+	
+	<div class="view">
 
 	<form name="ModifProduit" method="POST" action="<c:url value="/ModifierProduit"><c:param name="id" value ="${ produit.id }" /></c:url>">    
             
     <c:import url="/WEB-INF/produit_form.jsp" /> 
     			          
     </form>
+    
+    </div>
 	
 </body>
 </html>

@@ -5,11 +5,14 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Modifier paiement</title>
+<title>Application CRM</title>
 </head>
 <body>
-	<c:import url="/WEB-INF/menu.jsp" />
 
+	<h2>Modifier un paiement</h2>
+
+	<c:import url="/WEB-INF/menu.jsp" />
+	
 	<div class="view">
 		
 		<form method="POST" action="<c:url value="/ModifierPaiement"><c:param name="id" value="${ paiement.id }" /></c:url>">
