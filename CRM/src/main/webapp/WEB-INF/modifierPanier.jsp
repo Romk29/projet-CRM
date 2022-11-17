@@ -16,7 +16,7 @@
 
 	<form name="ModifPanier" method="POST" action="<c:url value="/ModifierPanier"><c:param name="id" value ="${ panier.id }" /></c:url>">    
             
-    <c:import url="/WEB-INF/panier_Form.jsp" /> 
+    <c:import url="/WEB-INF/panier_form.jsp" /> 
     			          
     </form>
 	

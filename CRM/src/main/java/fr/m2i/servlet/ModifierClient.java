@@ -110,9 +110,7 @@ Map<String, String> erreurs = new HashMap<String, String>();
 		} catch (NumberFormatException e) {
 			erreurs.put("genreClient", "Merci d'entrer 1 pour 'homme', 2 pour 'femme' ou 3 pour 'autre'.");
 		}
-		
-		
-		
+				
 		Client client = null;
 		try {
 			client = clientDao.trouver(id);
