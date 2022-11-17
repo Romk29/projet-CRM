@@ -19,7 +19,7 @@ import fr.m2i.model.Adresse;
 /**
  * Servlet implementation class AjouterAdresse
  */
-@WebServlet("/AjouterAdresse")
+@WebServlet("/ajouterAdresse")
 public class AjouterAdresse extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -47,24 +47,24 @@ public class AjouterAdresse extends HttpServlet {
 		// Ajout des contrôles
 		if (rue.length() == 0) {
 
-			erreurs.put("rueAdresse", "Merci d'entrer la rue.");
+			erreurs.put("rueAdresse", "Merci d'entrer le rue.");
 		}
 
 		if (ville.length() == 0) {
 
-			erreurs.put("villeAdresse", "Merci d'entrer la ville.");
+			erreurs.put("villeAdresse", "Merci d'entrer le rue.");
 		}
 
 		if (pays.length() == 0) {
 
-			erreurs.put("paysAdresse", "Merci d'entrer un pays.");
+			erreurs.put("paysAdresse", "Merci d'entrer une pays de adresse.");
 		}
 		
 		Pattern patternAdress = Pattern.compile("[0-9]{5}");
 
 		if (!patternAdress.matcher(codePostal).matches()) {
 
-			erreurs.put("codePostalAdresse", "le code postale n'est pas valide il lui faut 5 chiffre");
+			erreurs.put("codePostalAdresse", "le code postale n'est pas valide");
 		}
 
 		Adresse adresse = new Adresse();
