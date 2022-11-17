@@ -10,9 +10,11 @@
 </head>
 <body>
 
-	<h1>Détails Panier</h1>
+	<h1>Dï¿½tails Panier</h1>
 	
 	<c:import url="/WEB-INF/menu.jsp" />
+	
+	<div class="view">
 		
 		<table>
 			<thead>
@@ -21,12 +23,13 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td><c:out value="${ panier.client.nom } ${ paiement.client.prenom}" /></td>
-					
+				<tr class="pair">
+					<td><c:out value="${ panier.client.nom } ${ paiement.client.prenom}" /></td>								
 				</tr>				
 			</tbody>
 		</table>
+		
+	</div>
 	
 </body>
 </html>

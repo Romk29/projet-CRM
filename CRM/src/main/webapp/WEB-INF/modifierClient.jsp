@@ -12,16 +12,21 @@
 
 	<c:import url="/WEB-INF/menu.jsp" />
 	
-	<h2>Modifier un client</h2>
+	<div class="view">
 	
-	<form method="POST" action="<c:url value="/ModifierClient"><c:param name="id" value="${ client.id}" /></c:url>">
-	
-		<c:import url="/WEB-INF/client_form.jsp" />
+		<form method="POST" action="<c:url value="/ModifierClient"><c:param name="id" value="${ client.id}" /></c:url>">
 		
-		<input type="submit" value="Valider">
-        <input type="reset" value="Remettre à zéro">
+			<fieldset>
+				<legend>Modifier un client</legend>
+				<c:import url="/WEB-INF/client_form.jsp" />
+		    </fieldset>
+			
+			<input type="submit" value="Valider">
+	        <input type="reset" value="Remettre à zéro">
+		
+		</form>
 	
-	</form>
+	</div>
 
 </body>
 </html>
