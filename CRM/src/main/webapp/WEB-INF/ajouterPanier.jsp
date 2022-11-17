@@ -13,12 +13,16 @@
 	<h1>Ajouter un panier</h1>
 	
 	<c:import url="/WEB-INF/menu.jsp" />
+	
+	<div class="view">
 
 	<form name="AjoutPanier" method="POST" action="<c:url value="/AjouterPanier"></c:url>">    
             
     <c:import url="/WEB-INF/panier_form.jsp" /> 
     			          
     </form>
+
+	</div>
 	
 </body>
 </html>

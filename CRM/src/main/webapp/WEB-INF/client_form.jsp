@@ -6,13 +6,13 @@
         <input type="text" id="nomClient" name="nomClient" value="<c:out value="${ client.nom }" />">
         <span class="erreur">${ erreurs['nomClient'] }</span>
         
-        <label for="prenomClient">Prénom :</label>
+        <label for="prenomClient">Prï¿½nom :</label>
         <input type="text" id="prenomClient" name="prenomClient" value="<c:out value="${ client.prenom }" />">
     	<span class="erreur">${ erreurs['prenomClient'] }</span>
     	
         <label for="adresseClient">Adresse :</label>
 	    <select id="adresseClient" name="adresseClient">
-	        <option value="">Veuillez sélectionner une adresse</option>
+	        <option value="">Veuillez sï¿½lectionner une adresse</option>
 	        <c:forEach items="${ adresses }" var="adresse">
 	           <option value="${ adresse.id }" ${ adresse.id == client.adresse.id ? "selected" : "" }><c:out value="${ adresse.rue }" /> 
 	           	<c:out value="${ adresse.ville }" /> <c:out value="${ adresse.codePostal }" /> <c:out value="${ adresse.pays }" /></option>
@@ -20,7 +20,7 @@
 	    </select>
 	    <span class="erreur">${ erreurs['adresseClient'] }</span>
 	                 
-        <label for="nomSocieteClient">Société :</label>
+        <label for="nomSocieteClient">Sociï¿½tï¿½ :</label>
         <input type="text" id="nomSocieteClient" name="nomSocieteClient" value="<c:out value="${ client.nomSociete }" />">
          <span class="erreur">${ erreurs['nomSocieteClient'] }</span>
                 
@@ -28,7 +28,7 @@
         <input type="email" id="mailClient" name="mailClient" value="<c:out value="${ client.mail }" />">
 		<span class="erreur">${ erreurs['mailClient'] }</span>
 
-        <label for="telephoneClient">Téléphone :</label>
+        <label for="telephoneClient">Tï¿½lï¿½phone :</label>
         <input type="tel" id="telephoneClient" name="telephoneClient" value="<c:out value="${ client.telephone }" />">
         <span class="erreur">${ erreurs['telephoneClient'] }</span>
         

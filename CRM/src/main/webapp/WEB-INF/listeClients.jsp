@@ -12,6 +12,8 @@
 
 	<c:import url="/WEB-INF/menu.jsp" />
 	
+	<div class="view">
+	
 	<c:choose>
 		<c:when test="${ empty clients }">
 			<p>Aucun client trouvé...</p>
@@ -21,9 +23,9 @@
 			<table>
 				<thead>
 					<tr>
-						<td>Nom</td>
-						<td>Prénom</td>			
-						<td>Actions</td>
+						<td class="th">Nom</td>
+						<td class="th">Prénom</td>			
+						<td class="th">Actions</td>
 					</tr>
 				</thead>
 				<tbody>
@@ -42,6 +44,10 @@
 			</table>
 		</c:otherwise>
 	</c:choose><br>
+	
+	<a href="<c:url value="/AjouterClient" />"><button id="ajout">Ajouter un client</button></a>
+	
+	</div>
 
 </body>
 </html>

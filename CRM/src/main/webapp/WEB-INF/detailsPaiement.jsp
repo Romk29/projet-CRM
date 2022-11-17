@@ -24,7 +24,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr class="impair">
+				<tr class="pair">
 					<td><c:out value="${ paiement.client.prenom} ${ paiement.client.nom}" /></td>
 					<td><c:out value="${ paiement.noCarte}" /></td>
 					<td><c:out value="${ paiement.codeConfidentiel}" /></td>

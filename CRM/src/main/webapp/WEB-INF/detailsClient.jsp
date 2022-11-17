@@ -12,6 +12,8 @@
 
 	<c:import url="/WEB-INF/menu.jsp" />
 	
+	<div class="view">
+	
 	<table>
 		<thead>
 			<tr>
@@ -26,7 +28,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
+			<tr class="pair">
 				<td><c:out value="${ client.nom }"></c:out></td>
 				<td><c:out value="${ client.prenom }"></c:out></td>
 				<td><c:out value="${ client.adresse.rue } ${ client.adresse.ville } ${ client.adresse.codePostal } ${ client.adresse.pays }"></c:out></td>
@@ -38,6 +40,8 @@
 			</tr>
 		</tbody>
 	</table>
+	
+	</div>
 
 </body>
 </html>

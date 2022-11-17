@@ -12,16 +12,15 @@
 
 	<c:import url="/WEB-INF/menu.jsp" />
 	
-	<h2>Ajouter un client</h2>
+	<div class="view">
 	
 	<form method="POST" action="<c:url value="/AjouterClient" />">
 	
 		<c:import url="/WEB-INF/client_form.jsp" />
 		
-		<input type="submit" value="Valider">
-        <input type="reset" value="Remettre à zéro">
+		</form>
 	
-	</form>
+	</div>
 
 </body>
 </html>
