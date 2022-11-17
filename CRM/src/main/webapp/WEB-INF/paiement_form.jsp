@@ -10,17 +10,21 @@
 		<option value="${ client.id}" ${ client.id == paiement.client.id ? "selected" : "" }><c:out value="${ client.prenom}" /> <c:out value="${ client.nom}" /></option>
 	</c:forEach>
 </select>
+<span class="erreur">${ erreurs['clienPaiement'] }</span>
 <br/>
 
 <label for="noCartePaiement">No Carte :  </label>
 <input id="noCartePaiement" name="noCartePaiement" type="number" value="<c:out value="${ paiement.noCarte }" />" />
+<span class="erreur">${ erreurs['noCartePaiement'] }</span>
 <br/>
 
 <label for="codeConfidentielPaiement">Code confidentiel :  </label>
 <input id="codeConfidentielPaiement" name="codeConfidentielPaiement" type="number" value="<c:out value="${ paiement.codeConfidentiel }" />" />
+<span class="erreur">${ erreurs['codeConfidentielPaiement'] }</span>
 <br/>
 
 
 <label for="banquePaiement">Banque : </label>
 <input id="banquePaiement" name="banquePaiement" type="text" value="<c:out value="${ paiement.banque }" />" />
+<span class="erreur">${ erreurs['banquePaiement'] }</span>
 <br/>
