@@ -14,13 +14,3 @@
 					<span class="erreur">${ erreurs['clientPanier'] }</span>
 <br/>
 			</div> 
-
-		<div>
-			<input class="bas" type="submit" value="Valider" /> 
-			<input class="bas" type="reset" value="R�initialiser" />
-		</div>
-		
-		</fieldset>
-	
-</body>
-</html>
