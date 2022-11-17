@@ -16,7 +16,7 @@
 
 	<form name="ModifProduit" method="POST" action="<c:url value="/ModifierProduit"><c:param name="id" value ="${ produit.id }" /></c:url>">    
             
-    <c:import url="/WEB-INF/produitForm.jsp" /> 
+    <c:import url="/WEB-INF/produit_form.jsp" /> 
     			          
     </form>
 	
