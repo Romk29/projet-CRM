@@ -5,26 +5,26 @@
 
 <label for="rueAdresse">Rue : </label>
 <input id="rueAdresse" name="rueAdresse" type="text" value="<c:out value="${ adresse.rue }" />" />
-<!--<span class="erreur">${ erreurs['nomAdresse'] }</span>  -->
+<span class="erreur">${ erreurs['rueAdresse'] }</span> 
 <br/>
 
 <label for="villeAdresse">Ville : </label>
 <input id="villeAdresse" name="villeAdresse" type="text" value="<c:out value="${ adresse.ville }" />" />
-<!--  <span class="erreur">${ erreurs['prenomAdresse'] }</span>-->
+<span class="erreur">${ erreurs['villeAdresse'] }</span>
 <br/>
 
 <label for="paysAdresse">Pays : </label>
 <input id="paysAdresse" name="paysAdresse" type="text" value="<c:out value="${ adresse.pays }" />" />
-<!--  <span class="erreur">${ erreurs['telephoneAdresse'] }</span> -->
+ <span class="erreur">${ erreurs['paysAdresse'] }</span>
 <br/>
 
 <label for="codePostalAdresse">Code Postal : </label>
 <input id="codePostalAdresse" name="codePostalAdresse" type="text" value="<c:out value="${ adresse.codePostal }" />" />
-<!--   <span class="erreur">${ erreurs['emailAdresse'] }</span> -->
+<span class="erreur">${ erreurs['codePostalAdresse'] }</span> 
 <br/>
-<!--   
+  
 <br/>
 <span class="erreur">${ erreurs['adresse'] }</span>
 <c:if test="${ not empty erreurs }"> 
 	<p class="erreur">Echec de la sauvegarde de l'adresse.</p> 
-</c:if>-->
+</c:if>
