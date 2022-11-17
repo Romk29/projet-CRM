@@ -5,14 +5,14 @@ public class Adresse {
 	String rue;
 	String ville;
 	String pays;
-	int codePostal;
+	String codePostal;
 	
 	
 	public  Adresse() {
 	
 	}
 
-	public Adresse(String rue, String ville, String pays, int codePostal) {
+	public Adresse(String rue, String ville, String pays, String codePostal) {
 		
 		this.rue = rue;
 		this.ville = ville;
@@ -52,12 +52,12 @@ public class Adresse {
 		this.pays = pays;
 	}
 
-	public int getCodePostal() {
+	public String getCodePostal() {
 		return codePostal;
 	}
 
-	public void setCodePostal(int codePostal) {
-		this.codePostal = codePostal;
+	public void setCodePostal(String string) {
+		this.codePostal = string;
 	}
 
 	@Override
