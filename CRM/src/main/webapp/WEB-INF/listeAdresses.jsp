@@ -15,8 +15,6 @@
 
 	<div class="view">
 		
-		<a href="<c:url value="/ajouterAdresse" />"><button>Ajouter une adresse</button></a>
-		
 		<c:choose>
 			<c:when test="${ empty adresses }">
 				<p>Aucun adresse trouvée...</p>
@@ -25,10 +23,11 @@
 				<table>
 					<thead>
 						<tr>
-							<td>Rue</td>
-							<td>Ville</td>
-							<td>Pays</td>
-							<td>Code Postal</td>
+							<td class="th">Rue</td>
+							<td class="th">Ville</td>
+							<td class="th">Pays</td>
+							<td class="th">Code Postal</td>
+							<td class="th">Actions</td>
 						</tr>
 					</thead>
 					<tbody>
@@ -39,11 +38,9 @@
 								<td><c:out value="${ adresse.pays}" /></td>
 								<td><c:out value="${ adresse.codePostal}" /></td>
 								<td>
-									<a href="<c:url value="/DetailsAdresse"><c:param name="id" value="${ adresse.id}" /></c:url>">Voir</a>
-									|
-									<a href="<c:url value="/ModifierAdresse"><c:param name="id" value="${ adresse.id}" /></c:url>">Modifier</a>
-									|
-									<a href="<c:url value="/SupprimerAdresse"><c:param name="id" value="${ adresse.id}" /></c:url>">Supprimer</a>
+									<a href="<c:url value="/DetailsAdresse"><c:param name="id" value="${ adresse.id}" /></c:url>"><img src="./inc/voir.png" alt="icone voir"></a>
+									<a href="<c:url value="/ModifierAdresse"><c:param name="id" value="${ adresse.id}" /></c:url>"><img src="./inc/modifier.png" alt="icone modifier"></a>
+									<a href="<c:url value="/SupprimerAdresse"><c:param name="id" value="${ adresse.id}" /></c:url>"><img src="./inc/supprimer.png" alt="icone supprimer"></a>
 								</td>
 							</tr>
 						</c:forEach>
@@ -51,6 +48,8 @@
 				</table>
 			</c:otherwise>
 		</c:choose>
+		
+		<a href="<c:url value="/AjouterAdresse" />"><button id="ajout">Ajouter une adresse</button></a>
 		
 		<span>${ sessionScope.confirmMessage }</span>
 		

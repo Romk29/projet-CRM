@@ -27,11 +27,16 @@ nav {
 }
 
 a {
-    height: auto;
+    height: 25px;
     position : relative;
     font-size: large;
     text-decoration: none;
     color: white;
+}
+
+a:hover {
+	background-color: #9fc6c6;
+	color: black;
 }
 
 form {
@@ -125,6 +130,11 @@ a img {
 	margin: auto;
 	margin-top: 50px;
 	border: solid;
+}
+.view table thead {
+	color: white;
+	font-weight: bold;
+	background-color: #396060;
 }
 .view td {
 	padding: 10px;

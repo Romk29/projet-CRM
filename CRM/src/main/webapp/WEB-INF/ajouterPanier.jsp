@@ -13,12 +13,22 @@
 	<h1>Ajouter un panier</h1>
 	
 	<c:import url="/WEB-INF/menu.jsp" />
+	
+	<div class="view">
 
-	<form name="AjoutPanier" method="POST" action="<c:url value="/AjouterPanier"></c:url>">    
-            
-    <c:import url="/WEB-INF/panierForm.jsp" /> 
-    			          
-    </form>
+		<form name="AjoutPanier" method="POST" action="<c:url value="/AjouterPanier"></c:url>">  
+	            
+	        <fieldset>			
+				<legend>Ajouter un panier</legend>
+	    		<c:import url="/WEB-INF/panierForm.jsp" /> 
+	    	</fieldset>
+	    	
+	    	<input type="submit" value="Valider">
+	        <input type="reset" value="Remettre à zéro">
+	    			          
+	    </form>
+    
+    </div>
 	
 </body>
 </html>

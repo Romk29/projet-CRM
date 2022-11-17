@@ -15,7 +15,7 @@
 		<form method="POST" action="<c:url value="/AjouterPaiement" />">
 		
 			<fieldset>
-				<legend>Creer un paiement</legend>
+				<legend>Créer un paiement</legend>
 				
 				<c:import url="/WEB-INF/paiement_form.jsp" />
 
