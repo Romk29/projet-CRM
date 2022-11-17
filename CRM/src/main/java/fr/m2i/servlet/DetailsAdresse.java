@@ -43,7 +43,7 @@ public class DetailsAdresse extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		this.getServletContext().getRequestDispatcher( "/WEB-INF/detailsPanier.jsp").forward( request,response );
+		this.getServletContext().getRequestDispatcher( "/WEB-INF/detailsAdresse.jsp").forward( request,response );
 	}
 
 	/**
