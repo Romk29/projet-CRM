@@ -15,7 +15,7 @@ import fr.m2i.dao.DaoException;
 import fr.m2i.dao.DaoFactory;
 
 
-@WebServlet("/supprimerAdresse")
+@WebServlet("/SupprimerAdresse")
 public class SupprimerAdresse extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -39,7 +39,7 @@ public class SupprimerAdresse extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect( request.getContextPath() + "/listeAdresses" );
+		response.sendRedirect( request.getContextPath() + "/ListeAdresses" );
 	}
 
 	

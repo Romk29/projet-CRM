@@ -13,7 +13,7 @@ import fr.m2i.dao.DaoException;
 import fr.m2i.dao.DaoFactory;
 
 
-@WebServlet("/listeAdresses")
+@WebServlet("/ListeAdresses")
 public class ListeAdresses extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -37,9 +37,9 @@ public class ListeAdresses extends HttpServlet {
 		
 		
 
-		this.getServletContext().getRequestDispatcher("/WEB-INF/ListeAdresses.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/listeAdresses.jsp").forward(request, response);
 
-		request.getSession().removeAttribute("confirmMessage");
+		// request.getSession().removeAttribute("confirmMessage");
 	}
 
 

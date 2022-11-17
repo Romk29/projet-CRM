@@ -41,7 +41,7 @@ public class AjouterAdresse extends HttpServlet {
 		String rue = request.getParameter("rueAdresse");
 		String ville = request.getParameter("villeAdresse");
 		String pays = request.getParameter("paysAdresse");
-		int codePostal = Integer.parseInt(request.getParameter("codePostal"));
+		int codePostal = Integer.parseInt(request.getParameter("codePostalAdresse"));
 		
 		/*
 		//Ajout des contrôles
@@ -88,9 +88,9 @@ public class AjouterAdresse extends HttpServlet {
 		//if(erreurs.isEmpty()) {
 			try {
 				adresseDao.creer(adresse);
-				request.getSession().setAttribute("confirmMessage", "L'adresse a bien été ajouté !");
+				request.getSession().setAttribute("confirmMessage", "L'adresse a bien été ajoutée !");
 				
-				response.sendRedirect( request.getContextPath() + "/listeAdresses" );
+				response.sendRedirect( request.getContextPath() + "/ListeAdresses" );
 			} catch (DaoException e) {
 				e.printStackTrace();
 			}
@@ -98,7 +98,7 @@ public class AjouterAdresse extends HttpServlet {
 			request.setAttribute("adresse", adresse);
 			request.setAttribute("erreurs", erreurs);
 */
-			this.getServletContext().getRequestDispatcher("/WEB-INF/ajouterAdresse.jsp").forward(request, response);
+			//this.getServletContext().getRequestDispatcher("/WEB-INF/ajouterAdresse.jsp").forward(request, response);
 		}		
 	
 
