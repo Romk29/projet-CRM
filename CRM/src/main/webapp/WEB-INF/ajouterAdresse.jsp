@@ -11,6 +11,8 @@
 </head>
 <body>
 
+	<h1>Ajouter une adresse</h1>
+
 	<c:import url="/WEB-INF/menu.jsp" />
 
 	<div class="view">

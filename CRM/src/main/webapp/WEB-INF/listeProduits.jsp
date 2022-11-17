@@ -14,6 +14,8 @@
 	
 	<c:import url="/WEB-INF/menu.jsp" />
 
+	<div class="view">
+
 	<c:choose>
 		<c:when test="${ empty listeproduits }">
 			<p>Aucun produit trouvé...</p>
@@ -29,14 +31,14 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${ listeproduits }" var="produit">
-						<tr>
+					<c:forEach items="${ listeproduits }" var="produit" varStatus="infoBoucle">
+						<tr class="${ infoBoucle.index % 2 == 0 ? 'pair' : 'impair' }">
 							<td><c:out value="${ produit.nom }" /></td>
 							<td><c:out value="${ produit.description }"></c:out></td>
 							<td><c:out value="${ produit.prix }"></c:out></td>
-							<td><a class="actions" href="<c:url value="/DetailsProduit"><c:param name="id" value="${ produit.id }" /></c:url>">Voir /</a> 
-								<a class="actions" href="<c:url value="/SupprimerProduit"><c:param name="id" value ="${ produit.id }" /></c:url>">Supprimer /</a> 
-								<a class="actions" href="<c:url value="/ModifierProduit"><c:param name="id" value ="${ produit.id }" /></c:url>">Modifier</a>
+							<td><a class="actions" href="<c:url value="/DetailsProduit"><c:param name="id" value="${ produit.id }" /></c:url>"><img src="./inc/voir.png" alt="icone voir"></a> 
+								<a class="actions" href="<c:url value="/ModifierProduit"><c:param name="id" value ="${ produit.id }" /></c:url>"><img src="./inc/modifier.png" alt="icone modifier"></a> 
+								<a class="actions" href="<c:url value="/SupprimerProduit"><c:param name="id" value ="${ produit.id }" /></c:url>"><img src="./inc/supprimer.png" alt="icone supprimer"></a>
 							</td>
 						</tr>
 					</c:forEach>
@@ -46,7 +48,11 @@
 	</c:choose>
 
 	<div class="ajouter">
-		<a class="lienAjouter" href="<c:url value="/AjouterProduit"></c:url>">Ajouter un nouveau produit</a>
+		<a class="lienAjouter" href="<c:url value="/AjouterProduit" />"><button id="ajout">Ajouter un panier</button></a>
+	</div>
+	
+	<span>${ sessionScope.confirmMessage }</span>
+	
 	</div>
 
 </body>

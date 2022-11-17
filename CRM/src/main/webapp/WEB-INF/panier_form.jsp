@@ -17,10 +17,10 @@
 
 		<div>
 			<input class="bas" type="submit" value="Valider" /> 
-			<input class="bas" type="reset" value="Rï¿½initialiser" />
+			<input class="bas" type="reset" value="Réinitialiser" />
 		</div>
 		
-		</fieldset>
+		
 	
 </body>
 </html>

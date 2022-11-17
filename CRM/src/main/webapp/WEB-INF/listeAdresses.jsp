@@ -6,11 +6,14 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Liste Adresses</title>
+<title>Application CRM</title>
 <link type="text/css" rel="stylesheet"
 	href="<c:url value="/inc/style.css" />" />
 </head>
 <body>
+
+	<h1>Adresses enregistrées</h1>
+	
 	<c:import url="/WEB-INF/menu.jsp" />
 
 	<div class="view">

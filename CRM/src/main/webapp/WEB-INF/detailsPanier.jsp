@@ -10,7 +10,7 @@
 </head>
 <body>
 
-	<h1>Dï¿½tails Panier</h1>
+	<h1>Détails Panier</h1>
 	
 	<c:import url="/WEB-INF/menu.jsp" />
 	

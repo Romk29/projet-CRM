@@ -32,6 +32,7 @@ public class SupprimerPaiement extends HttpServlet {
 		try {
 			int id = Integer.parseInt(request.getParameter("id"));
 			paiementDao.supprimer(id);
+			request.getSession().setAttribute("confirmMessage", "Le paiement a bien été supprimé !");
 
 		} catch (DaoException e) {
 			e.printStackTrace();

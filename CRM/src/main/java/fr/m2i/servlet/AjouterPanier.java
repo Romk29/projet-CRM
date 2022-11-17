@@ -70,6 +70,9 @@ public class AjouterPanier extends HttpServlet {
 		
 		try {
 			panierDao.creer(panier1);
+			request.getSession().setAttribute("confirmMessage", "Le panier a bien été ajoutée !");
+			
+			response.sendRedirect(request.getContextPath() + "/ListePaniers");
 		} catch (DaoException e) {
 			e.printStackTrace();
 		}

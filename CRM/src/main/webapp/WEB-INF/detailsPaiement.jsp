@@ -5,11 +5,14 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Details paiements</title>
+<title>Application CRM</title>
 <link type="text/css" rel="stylesheet"
 	href="<c:url value="/inc/style.css" />" />
 </head>
 <body>
+
+	<h1>Détails Paiement</h1>
+
 	<c:import url="/WEB-INF/menu.jsp" />
 
 	<div class="view">
