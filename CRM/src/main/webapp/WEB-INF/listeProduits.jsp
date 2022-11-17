@@ -51,6 +51,8 @@
 		<a class="lienAjouter" href="<c:url value="/AjouterProduit" />"><button id="ajout">Ajouter un panier</button></a>
 	</div>
 	
+	<span>${ sessionScope.confirmMessage }</span>
+	
 	</div>
 
 </body>

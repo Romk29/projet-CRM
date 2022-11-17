@@ -50,6 +50,8 @@
 	
 	<a href="<c:url value="/AjouterClient" />"><button id="ajout">Ajouter un client</button></a>
 	
+	<span>${ sessionScope.confirmMessage }</span>
+	
 	</div>
 
 </body>

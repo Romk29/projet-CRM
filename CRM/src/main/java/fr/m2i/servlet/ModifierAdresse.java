@@ -91,7 +91,7 @@ public class ModifierAdresse extends HttpServlet {
 			adresseDao.miseAJour(adresse);
 
 			// Ajout d'un élément dans la session
-			request.getSession().setAttribute("confirmMessage", "L'adresse a bien été modifié !");
+			request.getSession().setAttribute("confirmMessage", "L'adresse a bien été modifiée !");
 
 			response.sendRedirect(request.getContextPath() + "/ListeAdresses");
 		} catch (DaoException e) {
