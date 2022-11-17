@@ -10,7 +10,7 @@
 </head>
 <body>
 
-	<h1>Détails Panier</h1>
+	<h1>Détails Produit</h1>
 	
 	<c:import url="/WEB-INF/menu.jsp" />
 		
@@ -22,8 +22,9 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><c:out value="${ panier.client.nom } ${ paiement.client.prenom}" /></td>
-					
+					<td><c:out value="${ produit.client.nom } ${ paiement.client.prenom}" /></td>
+					<td><c:out value="${ produit.description } " /></td>
+					<td><c:out value="${ produit.prix } " /></td>
 				</tr>				
 			</tbody>
 		</table>
