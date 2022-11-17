@@ -1,6 +1,9 @@
 package fr.m2i.servlet;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +14,7 @@ import fr.m2i.dao.DaoException;
 import fr.m2i.dao.ClientDao;
 import fr.m2i.dao.DaoFactory;
 import fr.m2i.dao.PanierDao;
+import fr.m2i.model.Client;
 import fr.m2i.model.Panier;
 
 
@@ -42,7 +46,17 @@ public class AjouterPanier extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		Map<String, String> erreurs = new HashMap<String, String>();
+		
 		Panier panier1 = new Panier();
+		
+		Client client = null;
+		try {
+			int idClient = Integer.parseInt(request.getParameter("clientPanier"));
+			client = clientDao.trouver(idClient);
+		} catch (DaoException | NumberFormatException e) {
+			erreurs.put("clientPanier", "Erreur le client n'existe pas.");
+		}
 		
 		try {
 			

@@ -16,7 +16,7 @@
 
 	<form name="AjoutPanier" method="POST" action="<c:url value="/AjouterPanier"></c:url>">    
             
-    <c:import url="/WEB-INF/panierForm.jsp" /> 
+    <c:import url="/WEB-INF/panier_form.jsp" /> 
     			          
     </form>
 	
