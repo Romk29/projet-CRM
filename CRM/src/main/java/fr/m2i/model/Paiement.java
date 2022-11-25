@@ -3,8 +3,8 @@ package fr.m2i.model;
 public class Paiement {
 	
 	private int id;
-	private int noCarte;
-	private int codeConfidentiel;
+	private String noCarte;
+	private String codeConfidentiel;
 	private String banque;
 	private Client client;
 	
@@ -13,7 +13,7 @@ public class Paiement {
 	}
 	
 	
-	public Paiement(int id, int noCarte, int codeConfidentiel, String banque, Client client) {
+	public Paiement(int id, String noCarte, String codeConfidentiel, String banque, Client client) {
 		this.id = id;
 		this.noCarte = noCarte;
 		this.codeConfidentiel = codeConfidentiel;
@@ -31,19 +31,19 @@ public class Paiement {
 		this.id = id;
 	}
 
-	public int getNoCarte() {
+	public String getNoCarte() {
 		return noCarte;
 	}
 
-	public void setNoCarte(int noCarte) {
+	public void setNoCarte(String noCarte) {
 		this.noCarte = noCarte;
 	}
 
-	public int getCodeConfidentiel() {
+	public String getCodeConfidentiel() {
 		return codeConfidentiel;
 	}
 
-	public void setCodeConfidentiel(int codeConfidentiel) {
+	public void setCodeConfidentiel(String codeConfidentiel) {
 		this.codeConfidentiel = codeConfidentiel;
 	}
 

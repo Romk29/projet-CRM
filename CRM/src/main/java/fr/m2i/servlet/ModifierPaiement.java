@@ -48,8 +48,8 @@ public class ModifierPaiement extends HttpServlet {
 		
 		int id = Integer.parseInt(request.getParameter("id"));
 		int idClient = Integer.parseInt(request.getParameter("clientPaiement"));
-		int noCarte = Integer.parseInt(request.getParameter("noCartePaiement"));
-		int codeConfidentiel = Integer.parseInt(request.getParameter("codeConfidentielPaiement"));
+		String noCarte = request.getParameter("noCartePaiement");
+		String codeConfidentiel = request.getParameter("codeConfidentielPaiement");
 		String banque = request.getParameter("banquePaiement");
 	
 		try {
