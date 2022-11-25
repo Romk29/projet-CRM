@@ -19,7 +19,7 @@ import utils.Utils;
 public class AdresseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	@Override //Récupération auteur
+	@Override //Récupération adresse
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setCharacterEncoding("UTF-8");
 
@@ -49,7 +49,7 @@ public class AdresseServlet extends HttpServlet {
 	}
 
 
-	@Override //Création auteur
+	@Override //Création adresse
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setCharacterEncoding("UTF-8");
 
@@ -73,7 +73,7 @@ public class AdresseServlet extends HttpServlet {
 	}
 
 
-	@Override //Modification auteur
+	@Override //Modification adresse
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setCharacterEncoding("UTF-8");
 
@@ -97,7 +97,7 @@ public class AdresseServlet extends HttpServlet {
 	}
 
 
-	@Override //Suppression auteur
+	@Override //Suppression Adresse
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setCharacterEncoding("UTF-8");
 
