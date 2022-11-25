@@ -7,10 +7,12 @@
     <persistence-unit name="applicationcrm">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         
-        <class>fr.cleverdev.models.Auteur</class>
-        <class>fr.cleverdev.models.Couverture</class>
-        <class>fr.cleverdev.models.Genre</class>
-        <class>fr.cleverdev.models.Livre</class>
+        <class>fr.m2i.model.Adresse</class>
+        <class>fr.m2i.model.Client</class>
+        <class>fr.m2i.model.Contient</class>
+        <class>fr.m2i.model.Paiement</class>
+         <class>fr.m2i.model.Panier</class>
+        <class>fr.m2i.model.Produit</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
