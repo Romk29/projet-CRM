@@ -1,16 +1,55 @@
 package fr.m2i.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "client")
 public class Client {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+	@Column(nullable = false, length = 70)
 	private String nom;
+	
+	@Column(nullable = false, length = 70)
 	private String prenom;
-	private Adresse adresse;
+	
+	@Column(nullable = false)
 	private String mail;
+	
+	@Column(length = 70)
 	private String nomSociete;
+	
+	@Column(nullable = false, length = 10)
 	private String telephone;
+	
 	private int etat;
+	
 	private int genre;
+	
+	@ManyToOne(fetch= FetchType.LAZY, cascade = CascadeType.ALL)
+	private Adresse adresse;
+	
+	@OneToMany(mappedBy = "client")
+	private List<Panier> paniers = new ArrayList<Panier>();
+	
+	@OneToMany(mappedBy = "client")
+	private List<Paiement> paiements = new ArrayList<Paiement>();
+	
 	
 	public Client() {
 		
