@@ -37,6 +37,18 @@ public class Produit {
 
 
 
+	public List<Panier> getPaniers() {
+		return paniers;
+	}
+
+
+
+	public void setPaniers(List<Panier> paniers) {
+		this.paniers = paniers;
+	}
+
+
+
 	public Produit(int id, String nom, String description, Double prix) {
 		this.id = id;
 		this.nom = nom;
