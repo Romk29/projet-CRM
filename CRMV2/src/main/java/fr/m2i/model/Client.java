@@ -141,6 +141,22 @@ public class Client {
 		this.genre = genre;
 	}
 	
+	public List<Panier> getPaniers() {
+		return paniers;
+	}
+
+	public void setPaniers(List<Panier> paniers) {
+		this.paniers = paniers;
+	}
+
+	public List<Paiement> getPaiements() {
+		return paiements;
+	}
+
+	public void setPaiements(List<Paiement> paiements) {
+		this.paiements = paiements;
+	}
+
 	@Override
 	public String toString() {
 		return getId() + " : " + getNom() + " " + getPrenom();
