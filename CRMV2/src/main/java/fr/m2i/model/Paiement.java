@@ -1,12 +1,35 @@
 package fr.m2i.model;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "paiement")
 public class Paiement {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+	@Column(nullable = false)
 	private int noCarte;
+	
+	@Column(nullable = false, length = 4)
 	private int codeConfidentiel;
+	
+	@Column(nullable = false)
 	private String banque;
+	
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Client client;
+	
 	
 	public Paiement() {
 		
