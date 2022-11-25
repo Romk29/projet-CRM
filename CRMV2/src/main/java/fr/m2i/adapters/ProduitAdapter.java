@@ -10,7 +10,7 @@ import com.google.gson.JsonSerializer;
 import fr.m2i.model.Produit;
 import fr.m2i.model.Panier;
 
-class ProduitAdapter implements JsonSerializer<Produit> {
+public class ProduitAdapter implements JsonSerializer<Produit> {
 
 	@Override
 	public JsonElement serialize(Produit produit, Type typeOfSrc, JsonSerializationContext context) {

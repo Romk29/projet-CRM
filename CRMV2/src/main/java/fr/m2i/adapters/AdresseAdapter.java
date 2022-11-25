@@ -10,7 +10,7 @@ import com.google.gson.JsonSerializer;
 import fr.m2i.model.Adresse;
 import fr.m2i.model.Client;
 
-class AdresseAdapter implements JsonSerializer<Adresse> {
+public class AdresseAdapter implements JsonSerializer<Adresse> {
 
 	@Override
 	public JsonElement serialize(Adresse adresse, Type typeOfSrc, JsonSerializationContext context) {
