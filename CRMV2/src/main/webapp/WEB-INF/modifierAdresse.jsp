@@ -5,31 +5,30 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Application CRM</title>
+<title>Application</title>
 <link rel="stylesheet" href="<c:url value="/inc/style.css" />" />
 </head>
 <body>
 
-	<h1>Ajouter un client</h1>
+	<h2>Modifier un adresse</h2>
 
 	<c:import url="/WEB-INF/menu.jsp" />
 	
 	<div class="view">
+			
+	<form method="POST" action="<c:url value="/ModifierAdresse"><c:param name="id" value="${ adresse.id}" /></c:url>">
 	
-	<form method="POST" action="<c:url value="/AjouterClient" />">
+	<fieldset>
+			<legend>Modifier une adresse</legend>
 	
-		<fieldset>
-			<legend>Creer un produit</legend>
-	
-			<c:import url="/WEB-INF/client_form.jsp" />
+		<c:import url="/WEB-INF/adresse_form.jsp" />
 		
-			</form>
-		
-		</fieldset>
+		<input type="submit" value="Valider">
+        <input type="reset" value="Remettre à zéro">
 	
-		<input type="submit" value="Valider" />
-		<input type="reset" value="Remettre a zero" />
+	</fieldset>
 	
+	</form>
 	
 	</div>
 
