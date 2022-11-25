@@ -70,4 +70,3 @@ public class AjouterPaiement extends HttpServlet {
 			
 		
 }
-

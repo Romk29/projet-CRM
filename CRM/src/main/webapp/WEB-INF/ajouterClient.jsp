@@ -18,9 +18,18 @@
 	
 	<form method="POST" action="<c:url value="/AjouterClient" />">
 	
-		<c:import url="/WEB-INF/client_form.jsp" />
+		<fieldset>
+			<legend>Creer un produit</legend>
+	
+			<c:import url="/WEB-INF/client_form.jsp" />
 		
-		</form>
+			</form>
+		
+		</fieldset>
+	
+		<input type="submit" value="Valider" />
+		<input type="reset" value="Remettre a zero" />
+	
 	
 	</div>
 
