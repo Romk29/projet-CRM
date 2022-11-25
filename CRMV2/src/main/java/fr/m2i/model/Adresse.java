@@ -51,6 +51,14 @@ public class Adresse {
 		return id;
 	}
 
+	public List<Client> getClients() {
+		return clients;
+	}
+
+	public void setClients(List<Client> clients) {
+		this.clients = clients;
+	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
