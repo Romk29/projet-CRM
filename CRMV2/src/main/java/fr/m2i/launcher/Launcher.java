@@ -1,4 +1,4 @@
-package LauncherTest;
+package fr.m2i.launcher;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
