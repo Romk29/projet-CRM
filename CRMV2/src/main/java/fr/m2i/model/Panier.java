@@ -39,8 +39,9 @@ public class Panier {
 		
 	}
 
-	public Panier(Client client) {
+	public Panier(Client client, List<Produit> produits) {
 		this.client = client;
+		this.produits = produits;
 	}
 
 	public int getId() {
@@ -58,7 +59,15 @@ public class Panier {
 	public void setClient(Client client) {
 		this.client = client;
 	}
-	
+			
+	public List<Produit> getProduits() {
+		return produits;
+	}
+
+	public void setProduits(List<Produit> produits) {
+		this.produits = produits;
+	}
+
 	@Override
 	public String toString() {
 		return  getId() + " " + getClient().getNom() + " " + getClient().getPrenom();
