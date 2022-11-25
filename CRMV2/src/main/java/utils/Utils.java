@@ -15,8 +15,8 @@ import com.google.gson.JsonSyntaxException;
 
 import fr.m2i.adapters.PaiementAdapter;
 import fr.m2i.adapters.ClientAdapter;
-import fr.m2i.adapters.AdressetAdapter;
-import fr.m2i.adapters.ProduittAdapter;
+import fr.m2i.adapters.AdresseAdapter;
+import fr.m2i.adapters.ProduitAdapter;
 import fr.m2i.adapters.PanierAdapter;
 import fr.m2i.model.Adresse;
 import fr.m2i.model.Client;
