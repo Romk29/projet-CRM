@@ -10,26 +10,25 @@
 </head>
 <body>
 
-	<h1>Ajouter un client</h1>
-
+	<h2>Modifier un paiement</h2>
+	
 	<c:import url="/WEB-INF/menu.jsp" />
+	
+	
 	
 	<div class="view">
 	
-	<form method="POST" action="<c:url value="/AjouterClient" />">
-	
-		<fieldset>
-			<legend>Creer un produit</legend>
-	
-			<c:import url="/WEB-INF/client_form.jsp" />
+		<form method="POST" action="<c:url value="/ModifierClient"><c:param name="id" value="${ client.id}" /></c:url>">
 		
-			</form>
+			<fieldset>
+				<legend>Modifier un client</legend>
+				<c:import url="/WEB-INF/client_form.jsp" />
+		    </fieldset>
+			
+			<input type="submit" value="Valider">
+	        <input type="reset" value="Remettre à zéro">
 		
-		</fieldset>
-	
-		<input type="submit" value="Valider" />
-		<input type="reset" value="Remettre a zero" />
-	
+		</form>
 	
 	</div>
 

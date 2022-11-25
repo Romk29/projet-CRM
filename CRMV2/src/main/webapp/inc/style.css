@@ -1,0 +1,159 @@
+@charset "ISO-8859-1";
+
+html, body { 
+    margin: 0; 
+    	height: 100%;
+}
+
+body {
+	background-size: cover;
+	background-position: center;
+  	background-repeat: no-repeat;
+  	background-color: #c6dddd;
+}
+
+.erreur {
+	color: red;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: #2F4F4F;
+    border-bottom: solid 3px white;
+    padding-bottom: 60px;
+}
+
+a {
+    height: 25px;
+    position : relative;
+    font-size: large;
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+	background-color: #9fc6c6;
+	color: black;
+}
+
+form {
+    margin: 30px 300px 30px 300px;
+}
+
+.blocform {
+    display: block;
+}
+
+table {
+    border: solid 1px black;
+    margin: 50px auto auto auto;
+}
+
+td  {
+    border: solid 1px black;
+}
+
+form label {
+    font-weight: bold;
+}
+
+form div {
+    margin: 15px;
+    display: block;
+    text-align: center;
+}
+
+fieldset {
+    font-weight: bold;
+    background-color: #86b7b7;
+}
+
+h1, h2 {
+	text-align : center;
+}
+
+a img {
+	height: 23px;
+	width: 20px;
+}
+
+/* MENU */
+.menu {
+	max-width: 800px;
+	margin: auto;
+	padding: 10px;
+	border: thick solid #86b7b7;
+}
+.menu h1 {
+	text-align: center;
+}
+.menu ul {
+  max-width: 600px;
+  list-style-type: none;
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.menu li {
+  float: left;
+  width: 150px;
+}
+
+.menu li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.menu li a:hover {
+  background-color: #86b7b7;
+}
+
+.menu li .active {
+  background-color: #86b7b7;
+}
+/* END MENU */
+
+/* VIEW */
+.view {
+	text-align: center;
+}
+.view table {
+	margin: auto;
+	margin-top: 50px;
+	border: solid;
+}
+.view table thead {
+	color: white;
+	font-weight: bold;
+	background-color: #396060;
+}
+.view td {
+	padding: 10px;
+	border: solid;
+}
+.view .pair {
+	background-color: white;
+}
+
+.view .impair {
+	background-color: #86b7b7;
+}
+
+.view button {
+	margin-top: 50px;
+}
+
+.view fieldset {
+	max-width: 800px;
+	margin: auto;
+}
+/* END VIEW */
