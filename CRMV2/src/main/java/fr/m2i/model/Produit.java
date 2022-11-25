@@ -1,15 +1,37 @@
 package fr.m2i.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "produit")
 public class Produit {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+	@Column(nullable = false, length = 70)
 	private String nom;
+	
+	@Column(length = 255)
 	private String description;
+	
+	@Column(nullable = false)
 	private Double prix;
 	
+	@ManyToMany(mappedBy = "produits")
+	private List<Panier> paniers = new ArrayList<Panier>();
 	
-	
-	
+		
 	public Produit() {
 	}
 
