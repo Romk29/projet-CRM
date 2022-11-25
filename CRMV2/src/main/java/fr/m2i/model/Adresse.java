@@ -1,11 +1,38 @@
 package fr.m2i.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "adresse")
 public class Adresse {
-	int id;
-	String rue;
-	String ville;
-	String pays;
-	String codePostal;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
+	@Column(nullable = false, length = 70)
+	private String rue;
+	
+	@Column(nullable = false, length = 70)
+	private String ville;
+	
+	@Column(nullable = false, length = 70)
+	private String pays;
+	
+	@Column(nullable = false, length = 5)
+	private String codePostal;
+	
+	@OneToMany(mappedBy = "adresse")
+	private List<Client> clients = new ArrayList<>();
 	
 	
 	public  Adresse() {
