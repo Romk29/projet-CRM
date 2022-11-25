@@ -15,7 +15,7 @@ import services.ServiceException;
 import utils.Utils;
 
 
-@WebServlet("/auteur")
+@WebServlet("/Adresse")
 public class AdresseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
