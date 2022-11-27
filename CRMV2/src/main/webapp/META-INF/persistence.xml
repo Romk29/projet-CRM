@@ -11,7 +11,7 @@
         <class>fr.m2i.model.Client</class>
         <class>fr.m2i.model.Contient</class>
         <class>fr.m2i.model.Paiement</class>
-         <class>fr.m2i.model.Panier</class>
+        <class>fr.m2i.model.Panier</class>
         <class>fr.m2i.model.Produit</class>
 
         <properties>

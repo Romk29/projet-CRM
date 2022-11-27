@@ -37,11 +37,13 @@ public class Client {
 	@Column(nullable = false, length = 10)
 	private String telephone;
 	
-	private int etat;
+	@Column(length = 10)
+	private String etat;
 	
-	private int genre;
+	@Column(length = 10)
+	private String genre;
 	
-	@ManyToOne(fetch= FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch= FetchType.LAZY, cascade = CascadeType.MERGE)
 	private Adresse adresse;
 	
 	@OneToMany(mappedBy = "client")
@@ -56,7 +58,7 @@ public class Client {
 	}
 
 	public Client(String nom, String prenom, Adresse adresse, String mail, String nomSociete, String telephone,
-			int etat, int genre) {
+			String etat, String genre) {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.adresse = adresse;
@@ -125,19 +127,19 @@ public class Client {
 		this.telephone = telephone;
 	}
 
-	public int getEtat() {
+	public String getEtat() {
 		return etat;
 	}
 
-	public void setEtat(int etat) {
+	public void setEtat(String etat) {
 		this.etat = etat;
 	}
 
-	public int getGenre() {
+	public String getGenre() {
 		return genre;
 	}
 
-	public void setGenre(int genre) {
+	public void setGenre(String genre) {
 		this.genre = genre;
 	}
 	

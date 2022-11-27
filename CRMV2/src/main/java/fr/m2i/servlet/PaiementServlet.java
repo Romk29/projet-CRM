@@ -20,31 +20,31 @@ import com.google.gson.JsonSyntaxException;
 
 import fr.m2i.dao.DaoException;
 import fr.m2i.dao.impl.DaoClient;
-import fr.m2i.dao.impl.DaoPanier;
-import fr.m2i.dao.impl.DaoProduit;
+import fr.m2i.dao.impl.DaoPaiement;
 import fr.m2i.model.Client;
+import fr.m2i.model.Paiement;
 import fr.m2i.model.Panier;
 import fr.m2i.model.Produit;
+import services.ServiceException;
+import services.ServicePaiement;
 import utils.Utils;
 
-
-@WebServlet("/Panier")
-public class PanierServlet extends HttpServlet {
+/**
+ * Servlet implementation class PaiementServlet
+ */
+@WebServlet("/Paiement")
+public class PaiementServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	private DaoPanier daoPanier;
+    
+	private DaoPaiement daoPaiement;
 	private DaoClient daoClient;
-	private DaoProduit daoProduit;
-
-    public PanierServlet() {
+	
+    public PaiementServlet() {
         super();
-        daoPanier = new DaoPanier();
-        daoClient = new DaoClient();
-        daoProduit = new DaoProduit();
+        daoPaiement = new DaoPaiement();
+        daoClient = new DaoClient();        
     }
 
-
-	 //Récupération panier
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setCharacterEncoding("UTF-8");
@@ -56,20 +56,20 @@ public class PanierServlet extends HttpServlet {
 		Gson gson = Utils.getSuperJson();
 
 		try {
-			String idPanier = req.getParameter("id");
-			if(idPanier != null) {
-				Panier panier = daoPanier.find(Integer.parseInt(idPanier));
-				response = gson.toJson(panier);
+			String idPaiement = req.getParameter("id");
+			if(idPaiement != null) {
+				Paiement paiement = daoPaiement.find(Integer.parseInt(idPaiement));
+				response = gson.toJson(paiement);
 			} else {
-				List<Panier> paniers = daoPanier.list();
-				response = gson.toJson(paniers);
+				List<Paiement> paiements = daoPaiement.list();
+				response = gson.toJson(paiements);
 			}
 			contentType = "application/json";
 		} catch(NumberFormatException e) {
 			response = "Le paramètre id n'est pas bon.";
 			responseStatus = 400;
 		} catch(DaoException e) {
-			response = "Le panier n'a pas été trouvé.";
+			response = "Le paiement n'a pas été trouvé.";
 			responseStatus = 404;
 		}
 
@@ -78,8 +78,9 @@ public class PanierServlet extends HttpServlet {
 		resp.getWriter().write(response);
 	}
 
-
-	 //Création panier
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setCharacterEncoding("UTF-8");
@@ -116,26 +117,23 @@ public class PanierServlet extends HttpServlet {
 			
 			//Récupération des informations du panier depuis l'objet JSON
 			
+			int noCarte = data.get("noCarte").getAsInt();
+			int codeConfidentiel = data.get("codeConfidentiel").getAsInt();
+			String banque = data.get("banque").getAsString();
 			int clientId = data.get("client_id").getAsInt();						
 			
-			
-			List<Produit> produits = new ArrayList<Produit>();
-			JsonArray a = data.get("produits").getAsJsonArray();
-            for(JsonElement j : a) {
-                int id = j.getAsJsonObject().get("produit_id").getAsInt();
-                Produit produit = daoProduit.find(id);
-                produits.add(produit);
-            }
 			
 			Client client = daoClient.find(clientId);		
 														
 			//Création du panier
-			Panier panier = new Panier();
-			panier.setClient(client);
-			panier.setProduits(produits);
+			Paiement paiement = new Paiement();
+			paiement.setNoCarte(noCarte);
+			paiement.setCodeConfidentiel(codeConfidentiel);
+			paiement.setBanque(banque);
+			paiement.setClient(client);
 
 			//Sauvegarde du panier
-			daoPanier.create(panier);
+			daoPaiement.create(paiement);
 		} catch (JsonSyntaxException e) {
 			response = "Erreur : Le format des données n'est pas bon, veuillez utiliser du JSON.";
 			responseStatus = 400;
@@ -150,8 +148,9 @@ public class PanierServlet extends HttpServlet {
 		resp.getWriter().write(response);
 	}
 
-
-	//Modification panier
+	/**
+	 * @see HttpServlet#doPut(HttpServletRequest, HttpServletResponse)
+	 */
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setCharacterEncoding("UTF-8");
@@ -188,27 +187,23 @@ public class PanierServlet extends HttpServlet {
 			
 			//Récupération des informations du panier depuis l'objet JSON
 			int id = data.get("id").getAsInt();
+			int noCarte = data.get("noCarte").getAsInt();
+			int codeConfidentiel = data.get("codeConfidentiel").getAsInt();
+			String banque = data.get("banque").getAsString();
 			int clientId = data.get("client_id").getAsInt();						
 			
 			
-			List<Produit> produits = new ArrayList<Produit>();
-			JsonArray a = data.get("produits").getAsJsonArray();
-            for(JsonElement j : a) {
-                int produitId = j.getAsJsonObject().get("produit_id").getAsInt();
-                Produit produit = daoProduit.find(produitId);
-                produits.add(produit);
-            }
-			
-			Client client = daoClient.find(clientId);
-			
-			//Création du livre
-			Panier panier = daoPanier.find(id);
-			
-			panier.setClient(client);			
-			panier.setProduits(produits);
+			Client client = daoClient.find(clientId);		
+														
+			//Création du panier
+			Paiement paiement = daoPaiement.find(id);
+			paiement.setNoCarte(noCarte);
+			paiement.setCodeConfidentiel(codeConfidentiel);
+			paiement.setBanque(banque);
+			paiement.setClient(client);
 
-			//Sauvegarde du livre
-			daoPanier.update(panier);
+			//Sauvegarde du panier
+			daoPaiement.update(paiement);
 		} catch (JsonSyntaxException e) {
 			response = "Erreur : Le format des données n'est pas bon, veuillez utiliser du JSON.";
 			responseStatus = 400;
@@ -222,28 +217,31 @@ public class PanierServlet extends HttpServlet {
 		resp.setStatus(responseStatus);
 		resp.getWriter().write(response);
 	}
-
-
-	 //Suppression livre
+	/**
+	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
+	 */
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setCharacterEncoding("UTF-8");
-		
+
 		int responseStatus = 200;
 		String response = "Ok";
 		String contentType = "text";
-		
+
+		Gson gson = Utils.getSuperJson();
+
 		try {
-			String idPanier = req.getParameter("id");
-			daoPanier.delete(Integer.parseInt(idPanier));
+			String idPaiement = req.getParameter("id");
+			daoPaiement.delete(Integer.parseInt(idPaiement));
+
 		} catch(NumberFormatException e) {
 			response = "Le paramètre id n'est pas bon.";
 			responseStatus = 400;
 		} catch(DaoException e) {
-			response = "Erreur serveur.";
-			responseStatus = 500;
+			response = "Le paiement n'a pas été trouvé.";
+			responseStatus = 404;
 		}
-		
+
 		resp.setContentType(contentType);
 		resp.setStatus(responseStatus);
 		resp.getWriter().write(response);

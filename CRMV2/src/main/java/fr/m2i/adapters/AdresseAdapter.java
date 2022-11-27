@@ -19,7 +19,7 @@ public class AdresseAdapter implements JsonSerializer<Adresse> {
 		json.addProperty("rue", adresse.getRue());
 		json.addProperty("ville", adresse.getVille());
 		json.addProperty("pays", adresse.getPays());
-		json.addProperty("codePostal", adresse.getCodePostal());
+		json.addProperty("code_Postal", adresse.getCodePostal());
 		
 		JsonArray clientsJson = new JsonArray();
 		JsonObject tmp;

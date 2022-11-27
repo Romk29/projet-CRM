@@ -19,69 +19,76 @@ import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 
 import fr.m2i.dao.DaoException;
-import fr.m2i.dao.impl.DaoClient;
-import fr.m2i.dao.impl.DaoPanier;
-import fr.m2i.dao.impl.DaoProduit;
-import fr.m2i.model.Client;
-import fr.m2i.model.Panier;
-import fr.m2i.model.Produit;
 import utils.Utils;
+import fr.m2i.dao.impl.DaoAdresse;
+import fr.m2i.dao.impl.DaoClient;
+import fr.m2i.dao.impl.DaoPaiement;
+import fr.m2i.dao.impl.DaoPanier;
+import fr.m2i.model.Adresse;
+import fr.m2i.model.Client;
+import fr.m2i.model.Paiement;
+import fr.m2i.model.Panier;
 
-
-@WebServlet("/Panier")
-public class PanierServlet extends HttpServlet {
+/**
+ * Servlet implementation class ClientServlet
+ */
+@WebServlet("/Client")
+public class ClientServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	private DaoPanier daoPanier;
+	
 	private DaoClient daoClient;
-	private DaoProduit daoProduit;
-
-    public PanierServlet() {
+	private DaoAdresse daoAdresse;
+	private DaoPanier daoPanier;
+	private DaoPaiement daoPaiement;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ClientServlet() {
         super();
-        daoPanier = new DaoPanier();
         daoClient = new DaoClient();
-        daoProduit = new DaoProduit();
+        daoAdresse = new DaoAdresse();
+        daoPanier = new DaoPanier();
+        daoPaiement = new DaoPaiement();
     }
 
-
-	 //Récupération panier
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		resp.setCharacterEncoding("UTF-8");
-
+		
 		int responseStatus = 200;
 		String response = "Ok";
 		String contentType = "text";
-
+		
 		Gson gson = Utils.getSuperJson();
-
+		
 		try {
-			String idPanier = req.getParameter("id");
-			if(idPanier != null) {
-				Panier panier = daoPanier.find(Integer.parseInt(idPanier));
-				response = gson.toJson(panier);
+			String idClient = req.getParameter("id");
+			if(idClient != null) {
+				Client client = daoClient.find(Integer.parseInt(idClient));
+				response = gson.toJson(client);
 			} else {
-				List<Panier> paniers = daoPanier.list();
-				response = gson.toJson(paniers);
+				List<Client> clients = daoClient.list();
+				response = gson.toJson(clients);
 			}
 			contentType = "application/json";
 		} catch(NumberFormatException e) {
 			response = "Le paramètre id n'est pas bon.";
 			responseStatus = 400;
 		} catch(DaoException e) {
-			response = "Le panier n'a pas été trouvé.";
+			response = "Le client n'a pas été trouvé.";
 			responseStatus = 404;
 		}
-
+		
 		resp.setContentType(contentType);
 		resp.setStatus(responseStatus);
 		resp.getWriter().write(response);
 	}
 
-
-	 //Création panier
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		resp.setCharacterEncoding("UTF-8");
 		
 		int responseStatus = 200;
@@ -99,43 +106,50 @@ public class PanierServlet extends HttpServlet {
 			}
 			body = buffer.toString();
 			
-			/* Pareil que faire ça, StringBuffer est une classe quasi identique à String
-			 * 
-			 * 			
-			  		String body = "";
-					String line = null;
-					BufferedReader reader = req.getReader();
-					while((line = reader.readLine()) != null) {
-						body += line;
-					}
-			 * 
-			 */
-			
 			//Récupération d'un objet JAVA représentant un JSON
 			JsonObject data = JsonParser.parseString(body).getAsJsonObject();
 			
-			//Récupération des informations du panier depuis l'objet JSON
+			//Récupération des informations du client depuis l'objet JSON
+			String nom = data.get("nom").getAsString();
+			String prenom = data.get("prenom").getAsString();
+			String mail = data.get("mail").getAsString();
+			String nomSociete = data.get("nomSociete").getAsString();
+			String telephone = data.get("telephone").getAsString();
+			String etat = data.get("etat").getAsString();
+			String genre = data.get("genre").getAsString();
 			
-			int clientId = data.get("client_id").getAsInt();						
+			int idAdresse = data.get("adresse_id").getAsInt();
+			Adresse adresse = daoAdresse.find(idAdresse);
 			
+			List<Panier> paniers = new ArrayList<Panier>();
+			JsonArray a = data.get("paniers").getAsJsonArray();
+			for(JsonElement j : a) {
+				int idPanier = j.getAsJsonObject().get("panier_id").getAsInt();
+				paniers.add(daoPanier.find(idPanier));
+			}
 			
-			List<Produit> produits = new ArrayList<Produit>();
-			JsonArray a = data.get("produits").getAsJsonArray();
-            for(JsonElement j : a) {
-                int id = j.getAsJsonObject().get("produit_id").getAsInt();
-                Produit produit = daoProduit.find(id);
-                produits.add(produit);
-            }
+			List<Paiement> paiements = new ArrayList<Paiement>();
+			JsonArray ar = data.get("paiements").getAsJsonArray();
+			for(JsonElement j : ar) {
+				int idPaiement = j.getAsJsonObject().get("paiement_id").getAsInt();
+				paiements.add(daoPaiement.find(idPaiement));
+			}
 			
-			Client client = daoClient.find(clientId);		
-														
-			//Création du panier
-			Panier panier = new Panier();
-			panier.setClient(client);
-			panier.setProduits(produits);
-
-			//Sauvegarde du panier
-			daoPanier.create(panier);
+			//Création du client
+			Client client = new Client();
+			client.setNom(nom);
+			client.setPrenom(prenom);
+			client.setMail(mail);
+			client.setNomSociete(nomSociete);
+			client.setTelephone(telephone);
+			client.setEtat(etat);
+			client.setGenre(genre);
+			client.setAdresse(adresse);
+			client.setPaniers(paniers);
+			client.setPaiements(paiements);
+			
+			//Sauvegarde du client
+			daoClient.create(client);
 		} catch (JsonSyntaxException e) {
 			response = "Erreur : Le format des données n'est pas bon, veuillez utiliser du JSON.";
 			responseStatus = 400;
@@ -150,10 +164,9 @@ public class PanierServlet extends HttpServlet {
 		resp.getWriter().write(response);
 	}
 
-
-	//Modification panier
 	@Override
 	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		resp.setCharacterEncoding("UTF-8");
 		
 		int responseStatus = 200;
@@ -171,44 +184,51 @@ public class PanierServlet extends HttpServlet {
 			}
 			body = buffer.toString();
 			
-			/* Pareil que faire ça, StringBuffer est une classe quasi identique à String
-			 * 
-			 * 			
-			  		String body = "";
-					String line = null;
-					BufferedReader reader = req.getReader();
-					while((line = reader.readLine()) != null) {
-						body += line;
-					}
-			 * 
-			 */
-			
 			//Récupération d'un objet JAVA représentant un JSON
 			JsonObject data = JsonParser.parseString(body).getAsJsonObject();
 			
-			//Récupération des informations du panier depuis l'objet JSON
+			//Récupération des informations du client depuis l'objet JSON
 			int id = data.get("id").getAsInt();
-			int clientId = data.get("client_id").getAsInt();						
+			String nom = data.get("nom").getAsString();
+			String prenom = data.get("prenom").getAsString();
+			String mail = data.get("mail").getAsString();
+			String nomSociete = data.get("nomSociete").getAsString();
+			String telephone = data.get("telephone").getAsString();
+			String etat = data.get("etat").getAsString();
+			String genre = data.get("genre").getAsString();
 			
+			int idAdresse = data.get("adresse_id").getAsInt();
+			Adresse adresse = daoAdresse.find(idAdresse);
 			
-			List<Produit> produits = new ArrayList<Produit>();
-			JsonArray a = data.get("produits").getAsJsonArray();
-            for(JsonElement j : a) {
-                int produitId = j.getAsJsonObject().get("produit_id").getAsInt();
-                Produit produit = daoProduit.find(produitId);
-                produits.add(produit);
-            }
+			List<Panier> paniers = new ArrayList<Panier>();
+			JsonArray a = data.get("paniers").getAsJsonArray();
+			for(JsonElement j : a) {
+				int idPanier = j.getAsJsonObject().get("panier_id").getAsInt();
+				paniers.add(daoPanier.find(idPanier));
+			}
 			
-			Client client = daoClient.find(clientId);
+			List<Paiement> paiements = new ArrayList<Paiement>();
+			JsonArray ar = data.get("paiements").getAsJsonArray();
+			for(JsonElement j : ar) {
+				int idPaiement = j.getAsJsonObject().get("paiement_id").getAsInt();
+				paiements.add(daoPaiement.find(idPaiement));
+			}
 			
-			//Création du livre
-			Panier panier = daoPanier.find(id);
+			//Modification du client
+			Client client = daoClient.find(id);
+			client.setNom(nom);
+			client.setPrenom(prenom);
+			client.setMail(mail);
+			client.setNomSociete(nomSociete);
+			client.setTelephone(telephone);
+			client.setEtat(etat);
+			client.setGenre(genre);
+			client.setAdresse(adresse);
+			client.setPaniers(paniers);
+			client.setPaiements(paiements);
 			
-			panier.setClient(client);			
-			panier.setProduits(produits);
-
-			//Sauvegarde du livre
-			daoPanier.update(panier);
+			//Sauvegarde du client
+			daoClient.update(client);
 		} catch (JsonSyntaxException e) {
 			response = "Erreur : Le format des données n'est pas bon, veuillez utiliser du JSON.";
 			responseStatus = 400;
@@ -222,11 +242,10 @@ public class PanierServlet extends HttpServlet {
 		resp.setStatus(responseStatus);
 		resp.getWriter().write(response);
 	}
-
-
-	 //Suppression livre
+	
 	@Override
 	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		resp.setCharacterEncoding("UTF-8");
 		
 		int responseStatus = 200;
@@ -234,8 +253,8 @@ public class PanierServlet extends HttpServlet {
 		String contentType = "text";
 		
 		try {
-			String idPanier = req.getParameter("id");
-			daoPanier.delete(Integer.parseInt(idPanier));
+			String idClient = req.getParameter("id");
+			daoClient.delete(Integer.parseInt(idClient));
 		} catch(NumberFormatException e) {
 			response = "Le paramètre id n'est pas bon.";
 			responseStatus = 400;
@@ -248,6 +267,6 @@ public class PanierServlet extends HttpServlet {
 		resp.setStatus(responseStatus);
 		resp.getWriter().write(response);
 	}
-
+    
 
 }

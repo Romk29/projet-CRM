@@ -16,7 +16,7 @@ public abstract class DaoObject<T> {
 	}
 
 
-	public T find(long id) throws DaoException {
+	public T find(int id) throws DaoException {
 		T object = null;
 
 		try {
@@ -90,7 +90,7 @@ public abstract class DaoObject<T> {
 		}
 	}
 
-	public void delete(long id) throws DaoException {
+	public void delete(int id) throws DaoException {
 		EntityTransaction trans = null;
 
 		try {
