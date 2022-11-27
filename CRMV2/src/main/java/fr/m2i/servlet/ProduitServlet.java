@@ -30,7 +30,7 @@ public class ProduitServlet extends HttpServlet {
 		try {
 			String idProduit = req.getParameter("id");
 			if(idProduit != null) {
-				response = new ServiceProduit().find(Long.parseLong(idProduit));
+				response = new ServiceProduit().find(Integer.parseInt(idProduit));
 			} else {
 				response = new ServiceProduit().list();
 			}
@@ -107,7 +107,7 @@ public class ProduitServlet extends HttpServlet {
 
 		try {
 			String idProduit = req.getParameter("id");
-			new ServiceProduit().delete(Long.parseLong(idProduit));
+			new ServiceProduit().delete(Integer.parseInt(idProduit));
 		} catch(NumberFormatException e) {
 			response = "Le paramètre id n'est pas bon.";
 			responseStatus = 400;

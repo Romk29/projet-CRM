@@ -66,7 +66,7 @@ public class ClientServlet extends HttpServlet {
 		try {
 			String idClient = req.getParameter("id");
 			if(idClient != null) {
-				Client client = daoClient.find(Long.parseLong(idClient));
+				Client client = daoClient.find(Integer.parseInt(idClient));
 				response = gson.toJson(client);
 			} else {
 				List<Client> clients = daoClient.list();
@@ -115,23 +115,23 @@ public class ClientServlet extends HttpServlet {
 			String mail = data.get("mail").getAsString();
 			String nomSociete = data.get("nomSociete").getAsString();
 			String telephone = data.get("telephone").getAsString();
-			int etat = data.get("etat").getAsInt();
-			int genre = data.get("genre").getAsInt();
+			String etat = data.get("etat").getAsString();
+			String genre = data.get("genre").getAsString();
 			
-			int idAdresse = data.get("idAdresse").getAsInt();
+			int idAdresse = data.get("adresse_id").getAsInt();
 			Adresse adresse = daoAdresse.find(idAdresse);
 			
 			List<Panier> paniers = new ArrayList<Panier>();
 			JsonArray a = data.get("paniers").getAsJsonArray();
 			for(JsonElement j : a) {
-				int idPanier = j.getAsJsonObject().get("id").getAsInt();
+				int idPanier = j.getAsJsonObject().get("panier_id").getAsInt();
 				paniers.add(daoPanier.find(idPanier));
 			}
 			
 			List<Paiement> paiements = new ArrayList<Paiement>();
 			JsonArray ar = data.get("paiements").getAsJsonArray();
 			for(JsonElement j : ar) {
-				int idPaiement = j.getAsJsonObject().get("id").getAsInt();
+				int idPaiement = j.getAsJsonObject().get("paiement_id").getAsInt();
 				paiements.add(daoPaiement.find(idPaiement));
 			}
 			
@@ -194,23 +194,23 @@ public class ClientServlet extends HttpServlet {
 			String mail = data.get("mail").getAsString();
 			String nomSociete = data.get("nomSociete").getAsString();
 			String telephone = data.get("telephone").getAsString();
-			int etat = data.get("etat").getAsInt();
-			int genre = data.get("genre").getAsInt();
+			String etat = data.get("etat").getAsString();
+			String genre = data.get("genre").getAsString();
 			
-			int idAdresse = data.get("idAdresse").getAsInt();
+			int idAdresse = data.get("adresse_id").getAsInt();
 			Adresse adresse = daoAdresse.find(idAdresse);
 			
 			List<Panier> paniers = new ArrayList<Panier>();
 			JsonArray a = data.get("paniers").getAsJsonArray();
 			for(JsonElement j : a) {
-				int idPanier = j.getAsJsonObject().get("id").getAsInt();
+				int idPanier = j.getAsJsonObject().get("panier_id").getAsInt();
 				paniers.add(daoPanier.find(idPanier));
 			}
 			
 			List<Paiement> paiements = new ArrayList<Paiement>();
 			JsonArray ar = data.get("paiements").getAsJsonArray();
 			for(JsonElement j : ar) {
-				int idPaiement = j.getAsJsonObject().get("id").getAsInt();
+				int idPaiement = j.getAsJsonObject().get("paiement_id").getAsInt();
 				paiements.add(daoPaiement.find(idPaiement));
 			}
 			
@@ -254,7 +254,7 @@ public class ClientServlet extends HttpServlet {
 		
 		try {
 			String idClient = req.getParameter("id");
-			daoClient.delete(Long.parseLong(idClient));
+			daoClient.delete(Integer.parseInt(idClient));
 		} catch(NumberFormatException e) {
 			response = "Le paramètre id n'est pas bon.";
 			responseStatus = 400;

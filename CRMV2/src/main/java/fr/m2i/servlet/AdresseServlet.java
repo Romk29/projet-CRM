@@ -30,7 +30,7 @@ public class AdresseServlet extends HttpServlet {
 		try {
 			String idAdresse = req.getParameter("id");
 			if(idAdresse != null) {
-				response = new ServiceAdresse().find(Long.parseLong(idAdresse));
+				response = new ServiceAdresse().find(Integer.parseInt(idAdresse));
 			} else {
 				response = new ServiceAdresse().list();
 			}
@@ -107,7 +107,7 @@ public class AdresseServlet extends HttpServlet {
 
 		try {
 			String idAdresse = req.getParameter("id");
-			new ServiceAdresse().delete(Long.parseLong(idAdresse));
+			new ServiceAdresse().delete(Integer.parseInt(idAdresse));
 		} catch(NumberFormatException e) {
 			response = "Le paramètre id n'est pas bon.";
 			responseStatus = 400;

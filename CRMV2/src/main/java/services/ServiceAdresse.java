@@ -16,7 +16,7 @@ public class ServiceAdresse {
 		daoAdresse = new DaoAdresse();
 	}
 
-	public String find(long id) throws ServiceException {
+	public String find(int id) throws ServiceException {
 		Adresse adresse;
 
 		try {
@@ -57,14 +57,14 @@ public class ServiceAdresse {
 
 	public void update(JsonObject data) throws ServiceException {
 		try {
-			String id = Utils.getStringParameter(data, "rue", false, 0, 50);
-			String rue = Utils.getStringParameter(data, "rue", false, 2, 20);
-			String ville = Utils.getStringParameter(data, "ville", true, 0, 20);
-			String pays = Utils.getStringParameter(data, "pays", false, 0, 10, "^\\d+$");
-			String codePostal= Utils.getStringParameter(data, "codePostal", true, 0, 60, "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)");
+			String id = Utils.getStringParameter(data, "id", false, 0, 50);
+			String rue = Utils.getStringParameter(data, "rue", false, 2, 50);
+			String ville = Utils.getStringParameter(data, "ville", true, 0, 50);
+			String pays = Utils.getStringParameter(data, "pays", false, 0, 10);
+			String codePostal= Utils.getStringParameter(data, "codePostal", true, 5, 5);
 
 			//Création de l'adresse
-			Adresse adresse = daoAdresse.find(Long.parseLong(id));
+			Adresse adresse = daoAdresse.find(Integer.parseInt(id));
 			adresse.setRue(rue);
 			adresse.setVille(ville);
 			adresse.setPays(pays);
@@ -79,7 +79,7 @@ public class ServiceAdresse {
 		}
 	}
 
-	public void delete(long id) throws ServiceException {
+	public void delete(int id) throws ServiceException {
 		try {
 			daoAdresse.delete(id);
 		} catch (DaoException e) {

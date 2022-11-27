@@ -18,24 +18,23 @@ public class Paiement {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(nullable = false)
+	@Column(nullable = false, length = 4)
 	private int noCarte;
 	
-	@Column(nullable = false, length = 4)
+	@Column(nullable = false, length = 3)
 	private int codeConfidentiel;
 	
 	@Column(nullable = false)
 	private String banque;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	private Client client;
 	
 	
 	public Paiement() {
 		
 	}
-	
-	
+		
 	public Paiement(int id, int noCarte, int codeConfidentiel, String banque, Client client) {
 		this.id = id;
 		this.noCarte = noCarte;

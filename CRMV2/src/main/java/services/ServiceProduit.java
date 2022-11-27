@@ -16,7 +16,7 @@ public class ServiceProduit {
 		daoProduit = new DaoProduit();
 	}
 
-	public String find(long id) throws ServiceException {
+	public String find(int id) throws ServiceException {
 		Produit produit;
 
 		try {
@@ -37,10 +37,9 @@ public class ServiceProduit {
 		try {
 			//Récupération des informations de l'produit depuis l'objet JSON
 			String nom = Utils.getStringParameter(data, "nom", false, 1, 70);
-			String description = Utils.getStringParameter(data, "description", true, 1, 70);
+			String description = Utils.getStringParameter(data, "description", true, 0, 70);
 			String prix = Utils.getStringParameter(data, "prix", false, 1, 70);
-			String codePostal= Utils.getStringParameter(data, "codePostal", true, 0, 5);
-
+			
 			//Création de l'produit
 			Produit produit = new Produit();
 			produit.setNom(nom);
@@ -56,13 +55,13 @@ public class ServiceProduit {
 
 	public void update(JsonObject data) throws ServiceException {
 		try {
-			String id = Utils.getStringParameter(data, "nom", false, 0, 50);
-			String nom = Utils.getStringParameter(data, "nom", false, 2, 20);
-			String description = Utils.getStringParameter(data, "description", true, 0, 20);
-			String prix = Utils.getStringParameter(data, "prix", false, 0, 10, "^\\d+$");
+			String id = Utils.getStringParameter(data, "id", false, 0, 50);
+			String nom = Utils.getStringParameter(data, "nom", false, 1, 70);
+			String description = Utils.getStringParameter(data, "description", true, 0, 70);
+			String prix = Utils.getStringParameter(data, "prix", false, 1, 70);
 			
 			//Création de l'produit
-			Produit produit = daoProduit.find(Long.parseLong(id));
+			Produit produit = daoProduit.find(Integer.parseInt(id));
 			produit.setNom(nom);
 			produit.setDescription(description);
 			produit.setPrix(Double.parseDouble(prix));
@@ -76,7 +75,7 @@ public class ServiceProduit {
 		}
 	}
 
-	public void delete(long id) throws ServiceException {
+	public void delete(int id) throws ServiceException {
 		try {
 			daoProduit.delete(id);
 		} catch (DaoException e) {

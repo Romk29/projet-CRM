@@ -58,7 +58,7 @@ public class PanierServlet extends HttpServlet {
 		try {
 			String idPanier = req.getParameter("id");
 			if(idPanier != null) {
-				Panier panier = daoPanier.find(Long.parseLong(idPanier));
+				Panier panier = daoPanier.find(Integer.parseInt(idPanier));
 				response = gson.toJson(panier);
 			} else {
 				List<Panier> paniers = daoPanier.list();
@@ -116,13 +116,13 @@ public class PanierServlet extends HttpServlet {
 			
 			//Récupération des informations du panier depuis l'objet JSON
 			
-			Long clientId = data.get("client_id").getAsLong();						
+			int clientId = data.get("client_id").getAsInt();						
 			
 			
 			List<Produit> produits = new ArrayList<Produit>();
 			JsonArray a = data.get("produits").getAsJsonArray();
             for(JsonElement j : a) {
-                long id = data.getAsJsonObject().get("id").getAsLong();
+                int id = j.getAsJsonObject().get("produit_id").getAsInt();
                 Produit produit = daoProduit.find(id);
                 produits.add(produit);
             }
@@ -187,14 +187,14 @@ public class PanierServlet extends HttpServlet {
 			JsonObject data = JsonParser.parseString(body).getAsJsonObject();
 			
 			//Récupération des informations du panier depuis l'objet JSON
-			long id = data.get("id").getAsLong();
-			Long clientId = data.get("client_id").getAsLong();						
+			int id = data.get("id").getAsInt();
+			int clientId = data.get("client_id").getAsInt();						
 			
 			
 			List<Produit> produits = new ArrayList<Produit>();
 			JsonArray a = data.get("produits").getAsJsonArray();
             for(JsonElement j : a) {
-                long produitId = data.getAsJsonObject().get("produit_id").getAsLong();
+                int produitId = j.getAsJsonObject().get("produit_id").getAsInt();
                 Produit produit = daoProduit.find(produitId);
                 produits.add(produit);
             }
@@ -235,7 +235,7 @@ public class PanierServlet extends HttpServlet {
 		
 		try {
 			String idPanier = req.getParameter("id");
-			daoPanier.delete(Long.parseLong(idPanier));
+			daoPanier.delete(Integer.parseInt(idPanier));
 		} catch(NumberFormatException e) {
 			response = "Le paramètre id n'est pas bon.";
 			responseStatus = 400;
